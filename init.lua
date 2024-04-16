@@ -41,3 +41,6 @@ end)
 
 -- load custom filetype detection definitions
 require("filetypes-custom")
+
+-- load custom snippetes for LuaSnip
+vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua_snippets"
