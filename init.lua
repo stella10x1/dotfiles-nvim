@@ -38,3 +38,6 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings.default"
 end)
+
+-- load custom filetype detection definitions
+require("filetypes-custom")
