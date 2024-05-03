@@ -1,6 +1,6 @@
 return {
   {
-    "mickael-menu/zk-nvim",
+    "zk-org/zk-nvim",
     cmd = { "ZkIndex", "ZkLinks", "ZkNew", "ZkNotes", "ZkTags", "ZkCd" },
     init = function()
       require "mappings.zk"
