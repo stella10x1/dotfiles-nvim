@@ -38,6 +38,8 @@ nomap("n", "<leader>fa")
 nomap("n", "<leader>fw")
 nomap("n", "<leader>fm")
 
+
+-- Telescope mappings
 map("n", "<leader>fa", function()
   return require("telescope.builtin").find_files { no_ignore = true }
 end, { desc = "Telescope Find all files (gitignored, but no hidden)" })
@@ -73,3 +75,12 @@ end, { desc = "Telescope Command history" })
 map("n", "<leader>f.", function()
   return require("telescope.builtin").find_files { no_ignore = true, hidden = true }
 end, { desc = "Telescope Find all files (gitignored and hidden)" })
+
+
+-- LuaSnip control
+local ls = require("luasnip")
+map({"i", "s"}, "<C-e>", function()
+  if ls.choice_active() then
+    ls.change_choice(1)
+  end
+end, {desc = "LuaSnip Next choice on node"})
