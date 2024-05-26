@@ -1,5 +1,31 @@
 local snippets = {
 
+  s("ansiblerole", {
+    t("---"),
+    t({"", "# "}), i(1, "tasks"), t({" file for role: "}), i(2, "role name"),
+    t({"", ""}),
+    t({"", ""}), i(0),
+    t({"", ""}),
+    t({"", "# End of file"}),
+  }),
+
+  s("ansiblevars", {
+    t("---"),
+    t({"", "# "}),
+    c(1, {
+      sn(nil, {t("host vars for "), i(1, "HOST")}),
+      sn(nil, {t("group vars for "), i(1, "GROUP")}),
+    }),
+    t({"", ""}),
+    t({"", "# ---------- Global Variables ----------"}),
+    t({"", ""}), i(2),
+    t({"", ""}),
+    t({"", "# ---------- Role Variables ----------"}),
+    t({"", ""}), i(0),
+    t({"", ""}),
+    t({"", "# End of file"}),
+  }),
+
   s("debug", {
     t("- name: \""), i(1, "Debug Task"), t("\""),
     t({"", "  ansible.builtin.debug:"}),
