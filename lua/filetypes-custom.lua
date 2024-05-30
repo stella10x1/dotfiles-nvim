@@ -25,8 +25,10 @@ vim.filetype.add({
     ['playbook.*%.ya?ml'] = "yaml.ansible",
     ['inventory.*%.ya?ml'] = "yaml.ansible",
     -- ansible role directories
-    ['.*/tasks/.*%.ya?ml'] = "yaml.ansible",
     ['.*/defaults/.*%.ya?ml'] = "yaml.ansible",
+    ['.*/handlers/.*%.ya?ml'] = "yaml.ansible",
     ['.*/meta/.*%.ya?ml'] = "yaml.ansible",
+    ['.*/tasks/.*%.ya?ml'] = "yaml.ansible",
+    ['.*/vars/.*%.ya?ml'] = "yaml.ansible",
   },
 })
