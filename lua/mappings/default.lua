@@ -27,6 +27,7 @@ map("v", "<C-c>", '"+y', { desc = "Copy to system clipboard" })
 map("v", "<C-s>", '"+d', { desc = "Cut to system clipboard" })
 
 -- selection mode
+map("s", "<C-s>", "<ESC>:w<CR>", { desc = "File Save the buffer and leave select mode" })
 map("s", "<C-v", '<DEL>"+Pa', { desc = "Paste from system clipboard" })
 
 ------------------------------------------------------------
