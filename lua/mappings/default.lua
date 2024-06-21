@@ -39,6 +39,11 @@ nomap("n", "<leader>fa")
 nomap("n", "<leader>fw")
 nomap("n", "<leader>fm")
 
+nomap("i", "<C-h>")
+nomap("i", "<C-j>")
+nomap("i", "<C-k>")
+nomap("i", "<C-l>")
+
 
 -- Telescope mappings
 map("n", "<leader>fa", function()
