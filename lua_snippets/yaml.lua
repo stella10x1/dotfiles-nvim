@@ -2,7 +2,7 @@ local snippets = {
 
   s("ansiblerole", {
     t("---"),
-    t({"", "# "}), i(1, "tasks"), t({" file for role: "}), i(2, "role name"),
+    t({"", "# "}), i(1, "tasks"), t({" file for "}), i(2, "role name"),
     t({"", ""}),
     t({"", ""}), i(0),
     t({"", ""}),
