@@ -14,6 +14,9 @@ map("n", "<M-p>", ":bprevious<CR>", { desc = "Buffer To previous buffer" })
 map("n", "<M-n>", ":bnext<CR>", { desc = "Buffer To next buffer" })
 map("n", "<M-o>", "o<ESC>k", { desc = "Insert Empty line below" })
 map("n", "<M-O>", "O<ESC>j", { desc = "Insert Empty line above" })
+map("n", "<leader>sd", "<cmd>set spell spelllang=de<CR>", { desc = "Spell Activate spell check and set to DE" })
+map("n", "<leader>se", "<cmd>set spell spelllang=en<CR>", { desc = "Spell Activate spell check and set to EN" })
+map("n", "<leader>S", "<cmd>set spell!<CR>", { desc = "Spell Toggle spell check" })
 
 -- insert mode
 map("i", "<C-s>", "<ESC>:w<CR>", { desc = "File Save the buffer and leave insert mode" })
