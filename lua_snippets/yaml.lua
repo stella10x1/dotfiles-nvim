@@ -1,3 +1,28 @@
+-- functions for snippets
+local function copy(args)
+	return args[1]
+end
+
+local function assertvar(args)
+  local output = {}
+  local linestart = '- ' .. args[1][1] .. ' '
+  local datatype = args[2][1]
+
+  if datatype == "list" then
+    table.insert(output, linestart .. 'is not string')
+    table.insert(output, linestart .. 'is not mapping')
+    table.insert(output, linestart .. 'is iterable')
+  else
+    table.insert(output, linestart .. 'is ' .. datatype)
+  end
+
+  if datatype == "string" then
+    table.insert(output, linestart .. '| length > 0')
+  end
+
+  return output
+end
+
 local snippets = {
 
   s("ansiblerole", {
@@ -40,6 +65,13 @@ local snippets = {
     t({"", "  ansible.builtin.fail:"}),
     t({"", "    msg: \"Under development\""}),
     t({"", ""}), i(0),
+  }),
+
+  s("assertvar", {
+    t"# ", i(1, "VARNAME"), t" is a ", i(2, "TYPE"),
+    t({"", "- "}), f(copy, 1), t" is defined",
+    t({"", "- "}), f(copy, 1), t" is not none",
+    t({"", ""}), f(assertvar, {1, 2})
   }),
 }
 
