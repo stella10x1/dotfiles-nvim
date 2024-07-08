@@ -31,7 +31,7 @@ map("v", "<C-x>", '"+d', { desc = "Cut to system clipboard" })
 
 -- selection mode
 map("s", "<C-s>", "<ESC>:w<CR>", { desc = "File Save the buffer and leave select mode" })
-map("s", "<C-v", '<DEL>"+Pa', { desc = "Paste from system clipboard" })
+map("s", "<C-v>", '<DEL>"+Pa', { desc = "Paste from system clipboard" })
 
 ------------------------------------------------------------
 -- NvChad Default Plugin Mappings
