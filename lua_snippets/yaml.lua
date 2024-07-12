@@ -83,6 +83,12 @@ local snippets = {
     t({"", "      ansible.builtin.include_role:"}),
     t({"", "        name: "}), i(0, "rolename"),
   }),
+
+  s("task", {
+    t({"- name: "}), i(1, "Do something"),
+    t({"", "  "}), i(2, "module"), t({":"}),
+    t({"", "    "}), i(0)
+  }),
 }
 
 return snippets
