@@ -73,6 +73,16 @@ local snippets = {
     t({"", "- "}), f(copy, 1), t" is not none",
     t({"", ""}), f(assertvar, {1, 2})
   }),
+
+  s("playbook", {
+    t"---",
+    t({"", "- name: "}), i(1, "Configure"),
+    t({"", "  hosts: "}), i(2, "localhost"),
+    t({"", "  tasks:"}),
+    t({"", "    - name: "}), i(3, "Include role"),
+    t({"", "      ansible.builtin.include_role:"}),
+    t({"", "        name: "}), i(0, "rolename"),
+  }),
 }
 
 return snippets
