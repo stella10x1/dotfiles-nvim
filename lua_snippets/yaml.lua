@@ -74,6 +74,18 @@ local snippets = {
     t({"", ""}), f(assertvar, {1, 2})
   }),
 
+  s("assert", {
+    t({"- name: "}), i(1, "Check something"),
+    t({"", "  ansible.builtin.assert:"}),
+    t({"", "    that:"}),
+    t({"", "      "}), i(0),
+    t({"", "    fail_msg: "}), i(2, "Check failed."),
+    t({"", "    success_msg: "}), i(3, "All assertions passed."),
+    t({"", "    quiet: "}), c(4, {
+      t"true", t"false"
+    })
+  }),
+
   s("playbook", {
     t"---",
     t({"", "- name: "}), i(1, "Configure"),
