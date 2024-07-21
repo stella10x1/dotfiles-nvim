@@ -23,6 +23,18 @@ local function assertvar(args)
   return output
 end
 
+-- return the string "---" if the cursor is in the first line.
+local function yamlbegin(args)
+  local output = {}
+  local cursorpos = vim.api.nvim_win_get_cursor(0)
+
+  if cursorpos[1] == 1 then
+    table.insert(output, "---")
+    table.insert(output, "")
+    return output
+  end
+end
+
 local snippets = {
 
   s("ansiblerole", {
@@ -86,14 +98,26 @@ local snippets = {
     })
   }),
 
-  s("playbook", {
-    t"---",
-    t({"", "- name: "}), i(1, "Configure"),
+  s("play", {
+    f(yamlbegin),
+    t({"- name: "}), i(1, "Configure"),
     t({"", "  hosts: "}), i(2, "localhost"),
+    t({"", "  gather_facts: "}), c(3, {
+      i(1, "true"),
+      i(1, "false"),
+    }),
     t({"", "  tasks:"}),
-    t({"", "    - name: "}), i(3, "Include role"),
-    t({"", "      ansible.builtin.include_role:"}),
-    t({"", "        name: "}), i(0, "rolename"),
+    c(4, {
+      sn(nil, {
+        t({"", "    - name: Include role "}), i(1, "NAME"),
+        t({"", "      ansible.builtin.include_role:"}),
+        t({"", "        name: "}), f(copy, 1),
+      }),
+      sn(nil, {
+        t({"", "    - name: "}),
+        i(1, "Configure / Print / Check"),
+      }),
+    }),
   }),
 
   s("task", {
