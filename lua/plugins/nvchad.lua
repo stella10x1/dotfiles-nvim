@@ -1,6 +1,6 @@
 -- this file contains overrides for the NvChad default plugins
 
-local cmp_ok, cmp = pcall(require, "cmp")
+local cmp = require "cmp"
 
 return {
   {
@@ -16,7 +16,7 @@ return {
         },
         ["<Tab>"] = cmp.mapping(function(fallback)
           if require("luasnip").jumpable(1) then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-next", true, true, true), "")
+            require("luasnip").expand_or_jump()
           else
             fallback()
           end
@@ -26,7 +26,7 @@ return {
         }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if require("luasnip").jumpable(-1) then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+            require("luasnip").jump(-1)
           else
             fallback()
           end
