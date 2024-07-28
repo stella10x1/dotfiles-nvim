@@ -2,6 +2,8 @@ vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.g.man_hardwrap = 0
+-- will be used by NvChad to load lua snippets
+vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua_snippets"
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -42,6 +44,3 @@ end)
 
 -- load custom filetype detection definitions
 require("filetypes-custom")
-
--- load custom snippetes for LuaSnip
-vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua_snippets"
