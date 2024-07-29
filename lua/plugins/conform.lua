@@ -3,7 +3,5 @@ return {
   init = function()
     require "mappings.conform"
   end,
-  config = function()
-    require "configs.conform"
-  end,
+  opts = require "configs.conform"
 }
