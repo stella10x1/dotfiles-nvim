@@ -18,7 +18,6 @@ map("n", "<leader>sd", "<cmd>set spell spelllang=de<CR>", { desc = "Spell Activa
 map("n", "<leader>se", "<cmd>set spell spelllang=en<CR>", { desc = "Spell Activate spell check and set to EN" })
 map("n", "<leader>S", "<cmd>set spell!<CR>", { desc = "Spell Toggle spell check" })
 
-
 -- insert mode
 map("i", "<C-s>", "<ESC>:w<CR>", { desc = "File Save the buffer and leave insert mode" })
 map("i", "<M-p>", "<ESC>:bprevious<CR>", { desc = "Buffer Leave insert and jump to previous buffer" })
@@ -52,7 +51,7 @@ nomap("i", "<C-k>")
 nomap("i", "<C-l>")
 
 -- general functions
-map("n", "<leader>tt", function ()
+map("n", "<leader>tt", function()
   return require("base46").toggle_theme()
 end, { desc = "Toggle Theme" })
 
@@ -93,7 +92,6 @@ map("n", "<leader>f.", function()
   return require("telescope.builtin").find_files { no_ignore = true, hidden = true }
 end, { desc = "Telescope Find all files (gitignored and hidden)" })
 
-
 -- new terminals
 map("n", "<leader>H", function()
   require("nvchad.term").new { pos = "sp" }
@@ -103,11 +101,10 @@ map("n", "<leader>V", function()
   require("nvchad.term").new { pos = "vsp" }
 end, { desc = "terminal new vertical window" })
 
-
 -- LuaSnip control
-local ls = require("luasnip")
-map({"i", "s"}, "<C-e>", function()
+local ls = require "luasnip"
+map({ "i", "s" }, "<C-e>", function()
   if ls.choice_active() then
     ls.change_choice(1)
   end
-end, {desc = "LuaSnip Next choice on node"})
+end, { desc = "LuaSnip Next choice on node" })
