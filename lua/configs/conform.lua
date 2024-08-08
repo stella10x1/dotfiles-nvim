@@ -6,6 +6,7 @@ local options = {
     javascript = { "prettier" },
     lua = { "stylua" },
     python = { "black" },
+    yaml = { "prettier" },
   },
 
   -- format_on_save = {
