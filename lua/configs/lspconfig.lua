@@ -1,3 +1,5 @@
+-- config file for nvim-lspconfig.
+
 -- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
@@ -13,3 +15,5 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+-- End of file.
