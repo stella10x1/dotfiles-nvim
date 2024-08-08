@@ -30,6 +30,14 @@ local snippets = {
     i(3, "DESC"),
     t '" })',
   }),
+
+  s("nvconf", {
+    t("-- "), i(1, "plugin"), t({" file for "}), i(2, "plugin name"), t".",
+    t({"", ""}),
+    t({"", ""}), i(0),
+    t({"", ""}),
+    t({"", "-- End of file."}),
+  }),
 }
 
 return snippets
