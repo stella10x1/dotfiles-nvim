@@ -1,6 +1,10 @@
+-- plugin file for gitsigns.nvim.
+
+-- basic configuration inherited from NvChad.
+
 return {
   "lewis6991/gitsigns.nvim",
-  opts = {
-    on_attach = require("mappings.gitsigns").on_attach
-  }
+  opts = require "configs.gitsigns",
 }
+
+-- End of file.

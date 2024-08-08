@@ -1,6 +1,6 @@
-M = {}
+-- buffer mappings file for gitsigns.nvim.
 
-M.on_attach = function(bufnr)
+local on_attach = function(bufnr)
   local gitsigns = package.loaded.gitsigns
 
   -- overwrite map function to give a default option.
@@ -70,4 +70,6 @@ M.on_attach = function(bufnr)
   map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
 end
 
-return M
+return on_attach
+
+-- End of file.
