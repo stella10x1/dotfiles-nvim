@@ -38,9 +38,11 @@ map("s", "<C-v>", '<DEL>"+Pa', { desc = "Paste from system clipboard" })
 ------------------------------------------------------------
 
 -- disable some NvChad default mappings
+nomap("n", "<leader>cm") -- default for Telescope git_commits
 nomap("n", "<leader>fa")
 nomap("n", "<leader>fw")
 nomap("n", "<leader>fm")
+nomap("n", "<leader>gt")  -- default for Telescope git_commits
 nomap("n", "<leader>h") -- default for open horizontal term
 nomap("n", "<leader>v") -- default for open vertical term
 nomap("n", "<leader>th") -- default for NvChad theme selector
@@ -91,6 +93,14 @@ end, { desc = "Telescope Command history" })
 map("n", "<leader>f.", function()
   return require("telescope.builtin").find_files { no_ignore = true, hidden = true }
 end, { desc = "Telescope Find all files (gitignored and hidden)" })
+
+map("n", "<leader>gc", function ()
+  return require("telescope.builtin").git_commits()
+end, { desc = "Git Commit overview in Telescope" })
+
+map("n", "<leader>gs", function ()
+  return require("telescope.builtin").git_status()
+end, { desc = "Git Status overview in Telescope" })
 
 -- new terminals
 map("n", "<leader>H", function()
