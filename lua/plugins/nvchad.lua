@@ -37,18 +37,4 @@ return {
       },
     },
   },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "bash",
-        "html",
-        "json",
-        "markdown",
-        "python",
-        "yaml",
-      },
-    },
-  },
 }
