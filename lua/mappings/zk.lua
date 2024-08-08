@@ -1,4 +1,4 @@
--- mappings file for zk.nvim
+-- mappings file for zk.nvim.
 
 local map = vim.keymap.set
 
@@ -11,7 +11,7 @@ map("n", "<leader>zd", function()
 end, { desc = "Zk Creates or opens daily journal note (for today)" })
 
 map("n", "<leader>zl", function()
-  local zk_notebook_dir = os.getenv("ZK_NOTEBOOK_DIR")
+  local zk_notebook_dir = os.getenv "ZK_NOTEBOOK_DIR"
   require("telescope.builtin").live_grep { search_dirs = { zk_notebook_dir } }
 end, { desc = "Zk Live grep over notebook directory" })
 
@@ -34,3 +34,5 @@ end, { desc = "Zk Creates or opens yesterdays journal entry" })
 map("n", "<leader>zz", function()
   require("zk").edit { excludeHrefs = { "journal" }, sort = { "modified" } }
 end, { desc = "Zk Search for zk notes excluding journal entries" })
+
+-- End of file
