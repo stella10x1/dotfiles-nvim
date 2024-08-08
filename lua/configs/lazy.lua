@@ -1,3 +1,5 @@
+-- config file for lazy.nvim.
+
 return {
   change_detection = { enabled = false },
   defaults = { lazy = true },
@@ -45,3 +47,5 @@ return {
     },
   },
 }
+
+-- End of file.
