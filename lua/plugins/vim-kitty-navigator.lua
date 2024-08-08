@@ -1,3 +1,5 @@
+-- plugin file for vim-kitty-navigator.
+
 return {
   "knubie/vim-kitty-navigator",
   lazy = false,
@@ -8,3 +10,5 @@ return {
     require "mappings.vim-kitty-navigator"
   end,
 }
+
+-- End of file.
