@@ -37,16 +37,11 @@ map("s", "<C-v>", '<DEL>"+Pa', { desc = "Paste from system clipboard" })
 -- NvChad Default Plugin Mappings
 ------------------------------------------------------------
 
--- disable some NvChad default mappings
-nomap("n", "<leader>cm") -- default for Telescope git_commits
-nomap("n", "<leader>fa")
-nomap("n", "<leader>fw")
-nomap("n", "<leader>fm")
-nomap("n", "<leader>gt")  -- default for Telescope git_commits
-nomap("n", "<leader>h") -- default for open horizontal term
-nomap("n", "<leader>v") -- default for open vertical term
+
 nomap("n", "<leader>th") -- default for NvChad theme selector
 
+nomap("n", "<leader>h") -- default for open horizontal term
+nomap("n", "<leader>v") -- default for open vertical term
 nomap("i", "<C-h>")
 nomap("i", "<C-j>")
 nomap("i", "<C-k>")
@@ -56,55 +51,6 @@ nomap("i", "<C-l>")
 map("n", "<leader>tt", function()
   return require("base46").toggle_theme()
 end, { desc = "Toggle Theme" })
-
--- Telescope mappings
-map("n", "<leader>fa", function()
-  return require("telescope.builtin").find_files { no_ignore = true }
-end, { desc = "Telescope Find all files (gitignored, but no hidden)" })
-
-map("n", "<leader>fl", function()
-  return require("telescope.builtin").live_grep()
-end, { desc = "Telescope Live grep" })
-
-map("n", "<leader>fm", function()
-  return require("telescope.builtin").man_pages { sections = { "1", "5" } }
-end, { desc = "Telescope Man pages section 1 and 5" })
-
-map("n", "<leader>fM", function()
-  return require("telescope.builtin").man_pages { sections = { "1", "2", "3", "4", "5", "6", "7", "8" } }
-end, { desc = "Telescope Man pages all sections" })
-
-map("n", "<leader>fo", function()
-  return require("telescope.builtin").vim_options()
-end, { desc = "Telescope Vim options" })
-
-map("n", "<leader>fr", function()
-  return require("telescope.builtin").registers()
-end, { desc = "Telescope Vim registers" })
-
-map("n", "<leader>fz", function()
-  return require("telescope.builtin").spell_suggest()
-end, { desc = "Telescope Spell suggestions" })
-
-map("n", "<leader>f/", function()
-  return require("telescope.builtin").search_history()
-end, { desc = "Telescope Search history" })
-
-map("n", "<leader>f:", function()
-  return require("telescope.builtin").command_history()
-end, { desc = "Telescope Command history" })
-
-map("n", "<leader>f.", function()
-  return require("telescope.builtin").find_files { no_ignore = true, hidden = true }
-end, { desc = "Telescope Find all files (gitignored and hidden)" })
-
-map("n", "<leader>gc", function ()
-  return require("telescope.builtin").git_commits()
-end, { desc = "Git Commit overview in Telescope" })
-
-map("n", "<leader>gs", function ()
-  return require("telescope.builtin").git_status()
-end, { desc = "Git Status overview in Telescope" })
 
 -- new terminals
 map("n", "<leader>H", function()

@@ -1,3 +1,5 @@
+-- plugin file for telescope.nvim.
+
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 
@@ -30,3 +32,5 @@ local options = {
 }
 
 return options
+
+-- End of file.
