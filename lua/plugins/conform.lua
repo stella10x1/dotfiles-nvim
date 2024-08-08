@@ -1,3 +1,5 @@
+-- plugin file for conform.nvim.
+
 return {
   "stevearc/conform.nvim",
   init = function()
@@ -5,3 +7,5 @@ return {
   end,
   opts = require "configs.conform"
 }
+
+-- End of file.

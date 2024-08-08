@@ -1,3 +1,5 @@
+-- config file for conform.nvim.
+
 local options = {
   formatters_by_ft = {
     css = { "prettier" },
@@ -8,12 +10,8 @@ local options = {
     python = { "black" },
     yaml = { "prettier" },
   },
-
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
-  -- },
 }
 
 return options
+
+-- End of file.
