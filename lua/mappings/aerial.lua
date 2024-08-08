@@ -1,4 +1,4 @@
--- mappings file for aerial.nvim
+-- mappings file for aerial.nvim.
 
 local map = vim.keymap.set
 
@@ -13,3 +13,5 @@ end, { desc = "Aerial Tag navigation toggle" })
 map("n", "<leader>fs", function()
   return require("telescope").extensions.aerial.aerial()
 end, { desc = "Aerial Find symbols in current buffer" })
+
+-- End of file.

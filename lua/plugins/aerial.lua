@@ -1,3 +1,5 @@
+-- plugin file for aerial.nvim.
+
 return {
   "stevearc/aerial.nvim",
   cmd = {
@@ -11,11 +13,11 @@ return {
   init = function()
     require "mappings.aerial"
   end,
-  opts = function()
-    return { nav = { keymaps = { ["q"] = "actions.close" } } }
-  end,
+  opts = require "configs.aerial",
   config = function(_, opts)
     require("aerial").setup(opts)
     require("telescope").load_extension "aerial"
   end,
 }
+
+-- End of file.
