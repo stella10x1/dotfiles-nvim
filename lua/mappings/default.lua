@@ -42,6 +42,9 @@ map("s", "<C-v>", '<DEL>"+Pa', { desc = "Paste from system clipboard" })
 nomap("n", "<leader>fa")
 nomap("n", "<leader>fw")
 nomap("n", "<leader>fm")
+nomap("n", "<leader>h") -- default for open horizontal term
+nomap("n", "<leader>v") -- default for open vertical term
+nomap("n", "<leader>th") -- default for NvChad theme selector
 
 nomap("i", "<C-h>")
 nomap("i", "<C-j>")
@@ -89,6 +92,16 @@ end, { desc = "Telescope Command history" })
 map("n", "<leader>f.", function()
   return require("telescope.builtin").find_files { no_ignore = true, hidden = true }
 end, { desc = "Telescope Find all files (gitignored and hidden)" })
+
+
+-- new terminals
+map("n", "<leader>H", function()
+  require("nvchad.term").new { pos = "sp" }
+end, { desc = "terminal new horizontal term" })
+
+map("n", "<leader>V", function()
+  require("nvchad.term").new { pos = "vsp" }
+end, { desc = "terminal new vertical window" })
 
 
 -- LuaSnip control
