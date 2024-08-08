@@ -78,6 +78,10 @@ map("n", "<leader>fo", function()
   return require("telescope.builtin").vim_options()
 end, { desc = "Telescope Vim options" })
 
+map("n", "<leader>fr", function()
+  return require("telescope.builtin").registers()
+end, { desc = "Telescope Vim registers" })
+
 map("n", "<leader>fz", function()
   return require("telescope.builtin").spell_suggest()
 end, { desc = "Telescope Spell suggestions" })
