@@ -1,4 +1,4 @@
--- buffer mappings file for zk.nvim
+-- buffer mappings file for zk.nvim.
 
 local map = vim.keymap.set
 
@@ -9,3 +9,5 @@ end)
 map("n", "K", function()
   vim.lsp.buf.hover()
 end)
+
+-- End of file.

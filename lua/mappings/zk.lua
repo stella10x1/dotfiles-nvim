@@ -35,4 +35,4 @@ map("n", "<leader>zz", function()
   require("zk").edit { excludeHrefs = { "journal" }, sort = { "modified" } }
 end, { desc = "Zk Search for zk notes excluding journal entries" })
 
--- End of file
+-- End of file.

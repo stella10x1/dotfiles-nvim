@@ -7,7 +7,7 @@ return {
     init = function()
       require "mappings.zk"
     end,
-    opts = require "mappings.zk",
+    opts = require "configs.zk",
     config = function(_, opts)
       require("zk").setup(opts)
     end,
