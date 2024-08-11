@@ -33,6 +33,74 @@ local function assertvar(args)
   return output
 end
 
+-- Composes the assertion in braces.
+local function clamped_assertion(var_name, var_check)
+  local braced_assertion = "(" .. var_name .. " " .. var_check .. ")"
+  return braced_assertion
+end
+
+-- Creates one multi line item on the assert list.
+local function assert_item(output, var_name, check_defined, check_none, var_type_check)
+  table.insert(output, "- >")
+  if check_defined ~= "" then
+    table.insert(output, "  " .. clamped_assertion(var_name, check_defined) .. " or")
+  end
+  if check_none ~= "" then
+    table.insert(output, "  " .. clamped_assertion(var_name, check_none) .. " or")
+  end
+  table.insert(output, "  " .. clamped_assertion(var_name, var_type_check))
+end
+
+-- Composes a multi statement assertion with 'or' conditions.
+local function assertmulti(args)
+  -- Map numbers to human readable var names.
+  local var_name = args[1][1]
+  local input_defined = args[2][1]
+  local input_none = args[3][1]
+  local var_type = args[4][1]
+
+  -- Compose check statement for variable definition.
+  local check_defined = "FAILED DEFINED CHECK"
+  if input_defined == " is not defined or" then
+    check_defined = "is not defined"
+  else
+    check_defined = ""
+  end
+
+  -- Compose check statement for none variable.
+  local check_none = "FAILED NONE CHECK"
+  if input_none == " is none or" then
+    check_none = "is none"
+  else
+    check_none = ""
+  end
+
+  -- Define table for output. LuaSnip will make every table entry a new line.
+  local output = {}
+
+  -- When variable is not allowed to be none this is the first check.
+  if check_none == "" then
+    assert_item(output, var_name, check_defined, check_none, 'is not none')
+  end
+
+  if var_type == "list" then
+    -- List is named 'iterable' in ansible
+    assert_item(output, var_name, check_defined, check_none, 'is not string')
+    assert_item(output, var_name, check_defined, check_none, 'is not mapping')
+    assert_item(output, var_name, check_defined, check_none, 'is iterable')
+  else
+    -- All other data types are simpler and just need their type name to be checked.
+    assert_item(output, var_name, check_defined, check_none, 'is ' .. var_type)
+  end
+
+  if var_type == "string" then
+    -- A string should have at least one character
+    assert_item(output, var_name, check_defined, check_none, '| length > 0')
+  end
+
+  return output
+end
+
 -- return the string "---" if the cursor is in the first line.
 local function yamlbegin(args)
   local output = {}
@@ -94,6 +162,26 @@ local snippets = {
     t({"", "- "}), f(copy, 1), t" is defined",
     t({"", "- "}), f(copy, 1), t" is not none",
     t({"", ""}), f(assertvar, {1, 2})
+  }),
+
+  s("assertmulti", {
+    t"# ", i(1, "VARNAME"), c(2, {
+      t" is not defined or",
+      t"",
+    }),
+    c(3, {
+      t" is none or",
+      t"",
+    }),
+    t" is a ", c(4, {
+      i(4, "TYPE"),
+      t"string",
+      t"boolean",
+      t"number",
+      t"list",
+      t"mapping",
+    }),
+    t({"", ""}), f(assertmulti, {1, 2, 3, 4})
   }),
 
   s("assert", {
