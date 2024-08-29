@@ -42,3 +42,6 @@ end)
 
 -- load custom filetype detection definitions
 require("filetypes-custom")
+
+-- load custom highlight groups
+require("hl-groups-custom")
