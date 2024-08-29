@@ -7,6 +7,7 @@ local options = {
     javascript = { "prettier" },
     json = { "prettier" },
     lua = { "stylua" },
+    markdown = { "markdownlint-cli2" },
     python = { "black" },
     yaml = { "prettier" },
   },
