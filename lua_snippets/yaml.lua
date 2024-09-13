@@ -223,6 +223,21 @@ local snippets = {
     t({"", "  "}), i(2, "module"), t({":"}),
     t({"", "    "}), i(0)
   }),
+
+  s("include_vars", {
+    t({"- name: \"Include OS specific variables for "}),
+    i(1, "<role name>"), t"\"",
+    t({"", "  ansible.builtin.include_vars:"}),
+    t({"", "    file: \"{{ lookup('ansible.builtin.first_found', params) }}\""}),
+    t({"", "  vars:"}),
+    t({"", "    params:"}),
+    t({"", "      files:"}),
+    t({"", "        - \"{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yaml\""}),
+    t({"", "        - \"{{ ansible_distribution }}.yaml\""}),
+    t({"", "        - \"defaults.yaml\""}),
+    t({"", "      paths:"}),
+    t({"", "        - \"vars\""})
+  })
 }
 
 return snippets
