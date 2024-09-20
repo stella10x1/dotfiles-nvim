@@ -9,6 +9,9 @@ return {
     "python",
     "yaml",
   },
+  indent = {
+    disable = { 'yaml' }
+  }
 }
 
 -- End of file.
