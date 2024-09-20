@@ -7,6 +7,7 @@ local i = ls.insert_node
 local f = ls.function_node
 local c = ls.choice_node
 local d = ls.dynamic_node
+local isn = ls.indent_snippet_node
 
 -- functions for snippets
 local function copy(args)
@@ -111,6 +112,18 @@ local function yamlbegin(args)
     table.insert(output, "")
     return output
   end
+end
+
+local ansible_loop = function (args)
+  return sn(nil, {
+    t("loop: \"{{ "), i(1, "items"), t(" }}\""),
+    t({"", "loop_control:"}),
+    t({"", "  loop_var: "}), i(2, "item"),
+    t({"", "  "}), c(3, {
+        i(1),
+        sn(nil, { t("label: \"{{ "), i(1, "item.name | default('N/A')"), t(" }}\"") })
+    }),
+  })
 end
 
 local snippets = {
@@ -237,7 +250,44 @@ local snippets = {
     t({"", "        - \"defaults.yaml\""}),
     t({"", "      paths:"}),
     t({"", "        - \"vars\""})
-  })
+  }),
+
+  s("loop", {
+    d(1, ansible_loop)
+  }),
+
+  s("include_tasks", {
+    t({"- name: \"Include tasks "}), c(2, {
+    d(nil, function (args)
+        local with_yaml = args[1][1] .. ".yaml"
+        return sn(nil, {
+          i(1), t({with_yaml})
+        })
+    end, {1}),
+      i(nil, "custom text")
+    }), t"\"",
+    t({"", "  ansible.builtin.include_tasks:"}),
+    t({"", "    file: "}),
+    i(1, "tasks"), t".yaml",
+    t({"", "  "}), c(3, {
+      i(nil),
+      isn(nil, {d(1, ansible_loop)}, "  ")
+    }),
+  }),
+
+  s("include_role", {
+    t({"- name: \"Include role "}), c(2, {
+      f(copy, 1),
+      i(nil, "custom text")
+    }), t"\"",
+    t({"", "  ansible.builtin.include_role:"}),
+    t({"", "    file: "}),
+    i(1, "role"),
+    t({"", "  "}), c(3, {
+      i(nil),
+      isn(1, {d(1, ansible_loop)}, "  ")
+    }),
+  }),
 }
 
 return snippets
