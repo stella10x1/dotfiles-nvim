@@ -8,6 +8,7 @@ local f = ls.function_node
 local c = ls.choice_node
 local d = ls.dynamic_node
 local isn = ls.indent_snippet_node
+local r = ls.restore_node
 
 -- functions for snippets
 local function copy(args)
@@ -111,6 +112,55 @@ local function yamlbegin(args)
     table.insert(output, "---")
     table.insert(output, "")
     return output
+  end
+end
+
+local function d_argument_specs_types(_, _, _, user_arg1)
+  -- user_arg1 is interpreted as scope. Currently supported scopes are:
+  --
+  --   * option_type
+  --   * elements_type
+  --
+  local scope = user_arg1
+
+  local argument_specs_types = {
+    t("str"),
+    t("list"),
+    t("dict"),
+    t("bool"),
+    t("int"),
+    t("float"),
+    t("path"),
+    t("raw"),
+    t("jsonarg"),
+    t("json"),
+    t("bytes"),
+    t("bits"),
+  }
+
+  if scope == "elements_type" then
+    return sn(nil, {t({"","  elements: \""}), c(1, {
+      r(nil, scope),
+      unpack(argument_specs_types)
+    }), t"\""})
+  elseif scope == "option_type" then
+    return sn(nil, c(1, {
+      r(nil, scope),
+      unpack(argument_specs_types)
+    }))
+  else
+    return sn(nil, t"The user_arg1 defining the scope has wrong value. Correct your snippet.")
+  end
+end
+
+local function comment_when(args, _, user_args1, user_args2)
+  local comment_string = user_args1
+  local comment_condition = user_args2
+
+  if args[1][1] == comment_condition or args[1][1] == "" then
+    return comment_string .. " "
+  else
+    return ""
   end
 end
 
@@ -316,6 +366,41 @@ local snippets = {
     t({"", ""}),
     t({"# End of file" })
   }),
+
+  s("opt", {
+    i(1, "OPTION_NAME"), t":",
+    t({"", "  type: \""}),
+    d(2, d_argument_specs_types, {}, { user_args = { "option_type" } }), t"\"",
+    d(3, function (args)
+      if args[1][1] == "list" then
+        return d_argument_specs_types(_, _, _, "elements_type")
+      else
+        return sn(nil, {t({""})})
+      end
+    end, {2}),
+    t({"", ""}), c(4, {
+      sn(nil, {t"  required: ", i(1, "true")}),
+      sn(nil, {t"  default: ", i(1, "null")}),
+    }),
+    t({"", "  "}), f(comment_when, 5, { user_args = { "#", "Detailed explanation of what this option does." }}), t({"description:"}),
+    t({"", "    "}), f(comment_when, 5, { user_args = { "#", "Detailed explanation of what this option does." }}), t({"- \""}), i(5, "Detailed explanation of what this option does."), t"\"",
+    d(6, function (args)
+      local list_elements = args[2][2]
+      if list_elements then
+        list_elements = list_elements:gsub("elements:", ""):gsub('"', ''):gsub("%s", "")
+      end
+      if args[1][1] == "dict" or list_elements == "dict" then
+        return sn(nil, {t({"", "  options:"}), t({"","    "}), i(1)})
+      else
+        return sn(nil, {t({"", ""})})
+      end
+    end, {2, 3})
+  }, {
+      stored = {
+        ["elements_type"] = i(nil, "TYPE"),
+        ["option_type"] = i(nil, "TYPE"),
+      }
+    })
 }
 
 return snippets
