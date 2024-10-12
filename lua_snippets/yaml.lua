@@ -288,6 +288,34 @@ local snippets = {
       isn(1, {d(1, ansible_loop)}, "  ")
     }),
   }),
+
+  s("argument_specs", {
+    f(yamlbegin),
+    t({"# argument specs file for " }), i(1, "NAME"),
+    t({"", "", "argument_specs:" }),
+    t({"", "  main:" }),
+    t({"", "    short_description: \"Main entry point for " }), f(copy, 1), t" role\"",
+    c(3, {
+      d(nil, function (args)
+        return sn(nil, {
+          t({"", "    description:" }),
+          t({"", "      - \"This is the main entrypoint for the " .. args[1][1] .. " role.\"" }),
+          t({"", "      "}),
+          f(comment_when, 1, { user_args = { "#", "Here we can describe what this entrypoint does in lengthy words." }}),
+          t({"- \"" }),
+          i(1, "Here we can describe what this entrypoint does in lengthy words."), t"\""
+        })
+      end, {1}),
+      t"",
+    }),
+    t({"", "    author:" }),
+    t({"", "      - \"" }), i(2, "AUTHOR"), t"\"",
+    t({"", "    options:" }),
+    t({"", "      " }), i(4),
+    t({"", ""}),
+    t({"", ""}),
+    t({"# End of file" })
+  }),
 }
 
 return snippets
