@@ -17,3 +17,11 @@ vim.api.nvim_set_hl(0, "ForbiddenTrailingSpaces", {
   bg = "#ff0000",
   ctermbg = 1,
 })
+
+vim.api.nvim_set_hl(0, "LuaSnipChoiceNodeHintDot", {
+  -- This highlight group is used to visualize forbidden spaces at the end of a line.
+  -- It is a bright red and occupies the whole cell.
+  -- fg = colors.cyan,
+  fg = "#088F8F",
+  ctermbg = 1,
+})
