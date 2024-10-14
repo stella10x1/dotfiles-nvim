@@ -331,7 +331,7 @@ local snippets = {
       i(nil, "custom text")
     }), t"\"",
     t({"", "  ansible.builtin.include_role:"}),
-    t({"", "    file: "}),
+    t({"", "    name: "}),
     i(1, "role"),
     t({"", "  "}), c(3, {
       i(nil),
