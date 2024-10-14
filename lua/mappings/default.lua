@@ -60,11 +60,3 @@ end, { desc = "terminal new horizontal term" })
 map("n", "<leader>V", function()
   require("nvchad.term").new { pos = "vsp" }
 end, { desc = "terminal new vertical window" })
-
--- LuaSnip control
-local ls = require "luasnip"
-map({ "i", "s" }, "<C-e>", function()
-  if ls.choice_active() then
-    ls.change_choice(1)
-  end
-end, { desc = "LuaSnip Next choice on node" })
