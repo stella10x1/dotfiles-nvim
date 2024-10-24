@@ -3,7 +3,7 @@
 return {
   {
     "zk-org/zk-nvim",
-    cmd = { "ZkIndex", "ZkLinks", "ZkNew", "ZkNotes", "ZkTags", "ZkCd" },
+    cmd = { "ZkBacklinks", "ZkIndex", "ZkLinks", "ZkNew", "ZkNotes", "ZkTags", "ZkCd" },
     init = function()
       require "mappings.zk"
     end,

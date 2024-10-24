@@ -6,6 +6,10 @@ map("n", "<leader>zA", function()
   require("zk").edit { sort = { "modified" } }
 end, { desc = "Zk Search for all zk notes" })
 
+map("n", "<leader>zb", function()
+  require("zk.commands").get("ZkBacklinks")()
+end, { desc = "Zk Create quick / temp note" })
+
 map("n", "<leader>zd", function()
   require("zk").new { dir = "journal/daily", group = "daily" }
 end, { desc = "Zk Creates or opens daily journal note (for today)" })
@@ -22,6 +26,10 @@ end, { desc = "Zk Search for zk journal entries" })
 map("n", "<leader>zn", function()
   require("zk_funcs").new_zk_note_in_subfolder()
 end, { desc = "Zk Create new note in ZK_DIR subfolder" })
+
+map("n", "<leader>zq", function()
+  require("zk").new { dir = "temp", group = "temp" }
+end, { desc = "Zk Create quick / temp note" })
 
 map("n", "<leader>zt", function()
   require("zk.commands").get "ZkTags"()
