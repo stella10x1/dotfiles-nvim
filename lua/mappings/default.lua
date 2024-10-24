@@ -18,6 +18,10 @@ map("n", "<leader>sd", "<cmd>set spell spelllang=de<CR>", { desc = "Spell Activa
 map("n", "<leader>se", "<cmd>set spell spelllang=en<CR>", { desc = "Spell Activate spell check and set to EN" })
 map("n", "<leader>S", "<cmd>set spell!<CR>", { desc = "Spell Toggle spell check" })
 
+map("n", "<leader><leader>", function()
+  vim.cmd.edit(vim.fn.stdpath('state') .. '/scratch.md')
+end, { desc = "Notes Open scratchpad note" })
+
 -- insert mode
 map("i", "<C-s>", "<ESC>:w<CR>", { desc = "File Save the buffer and leave insert mode" })
 map("i", "<M-p>", "<ESC>:bprevious<CR>", { desc = "Buffer Leave insert and jump to previous buffer" })
