@@ -248,7 +248,7 @@ local snippets = {
   }),
 
   s("assert", {
-    t({"- name: "}), i(1, "Check something"),
+    t({"- name: \""}), i(1, "Check something"), t"\"",
     t({"", "  ansible.builtin.assert:"}),
     t({"", "    that:"}),
     t({"", "      "}), i(0),
@@ -261,7 +261,7 @@ local snippets = {
 
   s("play", {
     f(yamlbegin),
-    t({"- name: "}), i(1, "Configure"),
+    t({"- name: \""}), i(1, "Configure"), t"\"",
     t({"", "  hosts: "}), i(2, "localhost"),
     t({"", "  gather_facts: "}), c(3, {
       i(1, "true"),
@@ -270,19 +270,19 @@ local snippets = {
     t({"", "  tasks:"}),
     c(4, {
       sn(nil, {
-        t({"", "    - name: Include role "}), i(1, "NAME"),
+        t({"", "    - name: \"Include role "}), i(1, "NAME"), t"\"",
         t({"", "      ansible.builtin.include_role:"}),
         t({"", "        name: "}), f(copy, 1),
       }),
       sn(nil, {
-        t({"", "    - name: "}),
-        i(1, "Configure / Print / Check"),
+        t({"", "    - name: \""}),
+        i(1, "Configure / Print / Check"), t"\"",
       }),
     }),
   }),
 
   s("task", {
-    t({"- name: "}), i(1, "Do something"),
+    t({"- name: \""}), i(1, "Do something"), t"\"",
     t({"", "  "}), i(2, "module"), t({":"}),
     t({"", "    "}), i(0)
   }),
