@@ -45,3 +45,6 @@ require("filetypes-custom")
 
 -- load custom highlight groups
 require("hl-groups-custom")
+
+-- load user commands
+require "user_commands"
