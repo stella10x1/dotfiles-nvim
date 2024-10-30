@@ -187,12 +187,14 @@ local snippets = {
     t({"", "# End of file"}),
   }),
 
-  s("ansiblevars", {
+  s("vars", {
     t("---"),
     t({"", "# "}),
     c(1, {
-      sn(nil, {t("host vars for "), i(1, "HOST")}),
-      sn(nil, {t("group vars for "), i(1, "GROUP")}),
+      sn(nil, {t("host_vars file for "), i(1, "HOST")}),
+      sn(nil, {t("group_vars file for "), i(1, "GROUP")}),
+      sn(nil, {t("HOST VARS: "), i(1, "HOST")}),
+      sn(nil, {t("GROUP VARS: "), i(1, "GROUP")}),
     }),
     t({"", ""}),
     t({"", "# ---------- Global Variables ----------"}),
