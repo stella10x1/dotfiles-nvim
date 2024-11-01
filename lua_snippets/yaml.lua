@@ -402,7 +402,16 @@ local snippets = {
         ["elements_type"] = i(nil, "TYPE"),
         ["option_type"] = i(nil, "TYPE"),
       }
-    })
+    }),
+
+  s("set_fact", {
+    t({"- name: \"Set fact "}), c(2, {
+      f(copy, 1),
+      i(nil, "custom text")
+    }), t"\"",
+    t({"", "  ansible.builtin.set_fact:"}),
+    t({"", "    "}), i(1, "key"), t": ", i(3, "value"),
+  }),
 }
 
 return snippets
