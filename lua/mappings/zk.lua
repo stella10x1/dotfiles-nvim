@@ -8,13 +8,13 @@ end, { desc = "Zk Search for all zk notes" })
 
 map("n", "<leader>zb", function()
   require("zk.commands").get("ZkBacklinks")()
-end, { desc = "Zk Create quick / temp note" })
+end, { desc = "Zk Show backlinks to this note" })
 
 map("n", "<leader>zd", function()
   require("zk").new { dir = "journal/daily", group = "daily" }
 end, { desc = "Zk Creates or opens daily journal note (for today)" })
 
-map("n", "<leader>zl", function()
+map("n", "<leader>zg", function()
   local zk_notebook_dir = os.getenv "ZK_NOTEBOOK_DIR"
   require("telescope.builtin").live_grep { search_dirs = { zk_notebook_dir } }
 end, { desc = "Zk Live grep over notebook directory" })
@@ -22,6 +22,10 @@ end, { desc = "Zk Live grep over notebook directory" })
 map("n", "<leader>zj", function()
   require("zk").edit { hrefs = { "journal" }, sort = { "modified" } }
 end, { desc = "Zk Search for zk journal entries" })
+
+map("n", "<leader>zl", function()
+  require("zk.commands").get("ZkLinks")()
+end, { desc = "Zk Show links from this note to other notes" })
 
 map("n", "<leader>zn", function()
   require("zk_funcs").new_zk_note_in_subfolder()
