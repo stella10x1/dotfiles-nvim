@@ -48,3 +48,4 @@ require("hl-groups-custom")
 
 -- load user commands
 require "user_commands"
+require "autocmd"
