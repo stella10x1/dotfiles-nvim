@@ -1,10 +1,5 @@
 local opt_local = vim.opt_local
 
-opt_local.tabstop = 2
-opt_local.softtabstop = 0
-opt_local.expandtab = true
-opt_local.shiftwidth = 2
-opt_local.smarttab = true
 opt_local.textwidth = 80
 opt_local.spell = true
 opt_local.spelllang = "en_us"
