@@ -28,9 +28,12 @@ local function highlight_trailing_spaces()
     -- using the # operator returns the line length of an object
     local line_length = #line
 
-    -- matches exactly two whitespaces at the end of a line an not more or less
-    -- %s reflect a whitespace
-    if line:match "%s%s$" and not line:match "%s%s%s$" then
+    -- explanation of the patters (`%s` reflects a whitespace character):
+    --
+    --   * match exactly two whitespaces at the end of the line
+    --   * NOT (match three whitespace at the end of the line, applies also for more..)
+    --   * NOT (match lines contain only whitespace)
+    if line:match "%s%s$" and not line:match "%s%s%s$" and not line:match "^%s*$" then
       vim.api.nvim_buf_add_highlight(0, 0, "AllowedTrailingSpaces", i - 1, #line - 2, #line)
     end
 
@@ -38,7 +41,13 @@ local function highlight_trailing_spaces()
     -- %S reflect any character, which is not whitespace
     if line:match "%s$" and not line:match "%S%s%s$" then
       local match_start = line:match "^(.*%S)%s*$"
-      local num_trailing_spaces = line_length - #match_start
+      local num_trailing_spaces = nil
+      -- match_start will be nil, if the line contains only whitespace
+      if match_start then
+        num_trailing_spaces = line_length - #match_start
+      else
+        num_trailing_spaces = line_length
+      end
       vim.api.nvim_buf_add_highlight(
         0,
         0,
