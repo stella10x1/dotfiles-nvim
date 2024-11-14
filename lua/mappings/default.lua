@@ -37,6 +37,8 @@ map("v", "<C-x>", '"+d', { desc = "Cut to system clipboard" })
 map("s", "<C-s>", "<ESC>:w<CR>", { desc = "File Save the buffer and leave select mode" })
 map("s", "<C-v>", '<DEL>"+Pa', { desc = "Paste from system clipboard" })
 
+map("t", "<ESC>", "<C-\\><C-N>", { desc = "Terminal Leave insert mode" })
+
 ------------------------------------------------------------
 -- NvChad Default Plugin Mappings
 ------------------------------------------------------------
