@@ -17,6 +17,10 @@ map("n", "<leader>fa", function()
   return require("telescope.builtin").find_files { no_ignore = true }
 end, { desc = "Telescope Find all files (gitignored, but no hidden)" })
 
+map("n", "<leader>fc", function()
+  return require("telescope").extensions.bibtex.bibtex()
+end, { desc = "Telescope Bibtex search (Cite)" })
+
 map("n", "<leader>fl", function()
   return require("telescope.builtin").live_grep()
 end, { desc = "Telescope Live grep" })
