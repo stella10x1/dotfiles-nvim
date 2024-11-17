@@ -9,6 +9,14 @@ return {
     "python",
     "yaml",
   },
+
+  highlight = {
+    enable = true,
+    disable = {
+      "latex",
+    },
+  },
+
   indent = {
     disable = { "yaml" },
   },
