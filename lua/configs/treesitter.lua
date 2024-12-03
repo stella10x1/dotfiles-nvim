@@ -5,6 +5,7 @@ return {
     "bash",
     "html",
     "json",
+    "lua",
     "markdown",
     "python",
     "yaml",
