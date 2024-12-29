@@ -412,6 +412,22 @@ local snippets = {
     t({"", "  ansible.builtin.set_fact:"}),
     t({"", "    "}), i(1, "key"), t": ", i(3, "value"),
   }),
+
+  s("validate_args", {
+    t({"- name: \"Validate arguments "}), i(1, "for XYZ"), t"\"",
+    t({"", "  ansible.builtin.validate_argument_spec:"}),
+    t({"", "    argument_spec:"}),
+    t({"", "      "}), f(copy, 2), t": \"{{ (lookup('ansible.builtin.file', 'meta/argument_specs.yaml')",
+    t({"", "        | from_yaml)['argument_specs']['main']['options']['"}), i(2, "ARGUMENT"), t({"'] }}\""}),
+    t({"", "    provided_arguments:"}),
+    t({"", "      "}), f(copy, 2), t": \"{{ item.value }}\"",
+    t({"", "  loop: \"{{ example_list }}\""}),
+    t({"", "  loop_control:"}),
+    t({"", "    loop_var: item"}),
+    t({"", "    label: \"{{ item.name }}\""}),
+    t({"", "  when:"}),
+    t({"", "    - item.value is defined"}),
+  })
 }
 
 return snippets
