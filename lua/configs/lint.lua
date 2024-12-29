@@ -9,9 +9,12 @@ M.setup = function()
     markdown = { "markdownlint-cli2" },
   }
 
-  vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost" }, {
+  vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
     callback = function()
-      lint.try_lint()
+      local lint_enabled = require("utils").get_lint_enabled(0)
+      if lint_enabled == true then
+        lint.try_lint()
+      end
     end,
   })
 end

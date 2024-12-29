@@ -6,6 +6,9 @@ return {
     require("configs.lint").setup()
   end,
   ft = { "markdown" },
+  init = function()
+    require "mappings.lint"
+  end,
 }
 
 -- End of file.
