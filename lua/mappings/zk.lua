@@ -10,6 +10,10 @@ map("n", "<leader>zb", function()
   require("zk.commands").get("ZkBacklinks")()
 end, { desc = "Zk Show backlinks to this note" })
 
+map("n", "<leader>zD", function()
+  require("zk").new { dir = "journal/daily", group = "daily", date = "tomorrow" }
+end, { desc = "Zk Creates or opens daily journal note (for today)" })
+
 map("n", "<leader>zd", function()
   require("zk").new { dir = "journal/daily", group = "daily" }
 end, { desc = "Zk Creates or opens daily journal note (for today)" })
@@ -27,6 +31,14 @@ map("n", "<leader>zl", function()
   require("zk.commands").get("ZkLinks")()
 end, { desc = "Zk Show links from this note to other notes" })
 
+map("n", "<leader>zM", function()
+  require("zk").new { dir = "journal/monthly", group = "monthly", date = "next month" }
+end, { desc = "Zk Creates or opens monthly journal note (for next month)" })
+
+map("n", "<leader>zm", function()
+  require("zk").new { dir = "journal/monthly", group = "monthly" }
+end, { desc = "Zk Creates or opens monthly journal note (for this month)" })
+
 map("n", "<leader>zn", function()
   require("zk_funcs").new_zk_note_in_subfolder()
 end, { desc = "Zk Create new note in ZK_DIR subfolder" })
@@ -38,6 +50,14 @@ end, { desc = "Zk Create quick / temp note" })
 map("n", "<leader>zt", function()
   require("zk.commands").get "ZkTags"()
 end, { desc = "Zk Search for zk tags" })
+
+map("n", "<leader>zW", function()
+  require("zk").new { dir = "journal/weekly", group = "weekly", date = "next week" }
+end, { desc = "Zk Creates or opens weekly journal note (for next week)" })
+
+map("n", "<leader>zw", function()
+  require("zk").new { dir = "journal/weekly", group = "weekly" }
+end, { desc = "Zk Creates or opens weekly journal note (for this week)" })
 
 map("n", "<leader>zy", function()
   require("zk").new { date = "yesterday", dir = "journal/daily", group = "daily" }
