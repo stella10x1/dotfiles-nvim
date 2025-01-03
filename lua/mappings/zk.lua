@@ -15,11 +15,11 @@ map("n", "<leader>zB", function()
 end, { desc = "Zk Show backlinks to this note" })
 
 map("n", "<leader>zD", function()
-  require("zk").new { dir = "journal/daily", group = "daily", date = "tomorrow" }
+  require("zk").new { group = "daily", date = "tomorrow" }
 end, { desc = "Zk Creates or opens daily journal note (for today)" })
 
 map("n", "<leader>zd", function()
-  require("zk").new { dir = "journal/daily", group = "daily" }
+  require("zk").new { group = "daily" }
 end, { desc = "Zk Creates or opens daily journal note (for today)" })
 
 map("n", "<leader>zg", function()
@@ -36,11 +36,11 @@ map("n", "<leader>zl", function()
 end, { desc = "Zk Show links from this note to other notes" })
 
 map("n", "<leader>zM", function()
-  require("zk").new { dir = "journal/monthly", group = "monthly", date = "next month" }
+  require("zk").new { group = "monthly", date = "next month" }
 end, { desc = "Zk Creates or opens monthly journal note (for next month)" })
 
 map("n", "<leader>zm", function()
-  require("zk").new { dir = "journal/monthly", group = "monthly" }
+  require("zk").new { group = "monthly" }
 end, { desc = "Zk Creates or opens monthly journal note (for this month)" })
 
 map("n", "<leader>zn", function()
@@ -48,7 +48,7 @@ map("n", "<leader>zn", function()
 end, { desc = "Zk Create new note in ZK_DIR subfolder" })
 
 map("n", "<leader>zq", function()
-  require("zk").new { dir = "temp", group = "temp" }
+  require("zk").new { group = "temp" }
 end, { desc = "Zk Create quick / temp note" })
 
 map("n", "<leader>zt", function()
@@ -56,15 +56,15 @@ map("n", "<leader>zt", function()
 end, { desc = "Zk Search for zk tags" })
 
 map("n", "<leader>zW", function()
-  require("zk").new { dir = "journal/weekly", group = "weekly", date = "next week" }
+  require("zk").new { group = "weekly", date = "next week" }
 end, { desc = "Zk Creates or opens weekly journal note (for next week)" })
 
 map("n", "<leader>zw", function()
-  require("zk").new { dir = "journal/weekly", group = "weekly" }
+  require("zk").new { group = "weekly" }
 end, { desc = "Zk Creates or opens weekly journal note (for this week)" })
 
 map("n", "<leader>zy", function()
-  require("zk").new { date = "yesterday", dir = "journal/daily", group = "daily" }
+  require("zk").new { group = "daily", date = "yesterday" }
 end, { desc = "Zk Creates or opens yesterdays journal entry" })
 
 map("n", "<leader>zz", function()
