@@ -7,6 +7,10 @@ map("n", "<leader>zA", function()
 end, { desc = "Zk Search for all zk notes" })
 
 map("n", "<leader>zb", function()
+  require("zk.commands").get("ZkBuffers")()
+end, { desc = "Zk Search for open zk notes" })
+
+map("n", "<leader>zB", function()
   require("zk.commands").get("ZkBacklinks")()
 end, { desc = "Zk Show backlinks to this note" })
 
