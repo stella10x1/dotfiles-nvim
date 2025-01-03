@@ -7,11 +7,11 @@ map("n", "<leader>zA", function()
 end, { desc = "Zk Search for all zk notes" })
 
 map("n", "<leader>zb", function()
-  require("zk.commands").get("ZkBuffers")()
+  require("zk.commands").get "ZkBuffers"()
 end, { desc = "Zk Search for open zk notes" })
 
 map("n", "<leader>zB", function()
-  require("zk.commands").get("ZkBacklinks")()
+  require("zk.commands").get "ZkBacklinks"()
 end, { desc = "Zk Show backlinks to this note" })
 
 map("n", "<leader>zD", function()
@@ -32,7 +32,7 @@ map("n", "<leader>zj", function()
 end, { desc = "Zk Search for zk journal entries" })
 
 map("n", "<leader>zl", function()
-  require("zk.commands").get("ZkLinks")()
+  require("zk.commands").get "ZkLinks"()
 end, { desc = "Zk Show links from this note to other notes" })
 
 map("n", "<leader>zM", function()
