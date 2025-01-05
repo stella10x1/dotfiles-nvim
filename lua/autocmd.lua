@@ -7,3 +7,10 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost" }, {
   end,
   pattern = "*.md",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function ()
+    vim.opt_local.signcolumn = "no"
+  end,
+  pattern = "man",
+})
