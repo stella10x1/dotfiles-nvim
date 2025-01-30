@@ -64,7 +64,31 @@ local snippets = {
     t({"",'\tBLUE = "\\033[1;34m"'}),
     t({"",'\tMAGENTA = "\\033[1;35m"'}),
     t({"",'\tCYAN = "\\033[1;36m"'}),
-  })
+  }),
+
+  s("ansible_filter", {
+    t"from ansible.errors import AnsibleFilterError",
+    t({"",""}),
+    t({"",""}),
+    t({"","def "}), i(1, "my_filter"), t"(", i(2, "data"), t"):",
+    t({"","    if not isinstance("}), f(copy, 2), t", ", i(3, "type"), t"):",
+    t({"","        raise AnsibleFilterError("}),
+    t({"","            \"Input variable for this filter need to be of type "}), f(copy, 3), t".\"",
+    t({"","        )"}),
+    t({"",""}),
+    t({"","    # Process input data"}),
+    t({"","    "}), i(4, "output"), t" = ", i(0),
+    t({"","    "}),
+    t({"","    return "}), f(copy, 4),
+    t({"","    "}),
+    t({"","    "}),
+    t({"","# Register the filters"}),
+    t({"","class FilterModule(object):"}),
+    t({"","    def filters(self):"}),
+    t({"","        return {"}),
+    t({"","            \""}), f(copy, 1), t"\": ", f(copy, 1), t",",
+    t({"","        }"}),
+  }),
 }
 
 return snippets
