@@ -264,17 +264,36 @@ local snippets = {
   s("play", {
     f(yamlbegin),
     t({"- name: \""}), i(1, "Configure"), t"\"",
-    t({"", "  hosts: "}), i(2, "localhost"),
+    t({"", "  hosts: "}),
+      c(2,{
+        i(nil, "localhost"),
+        t"\"{{ target | default('all') }}\"",
+      }),
     t({"", "  gather_facts: "}), c(3, {
       i(1, "true"),
       i(1, "false"),
     }),
-    t({"", "  tasks:"}),
     c(4, {
+      sn(nil, {
+        t({"", "  tags:"}),
+        t({"", "    - "}), i(1, "tag_name"),
+      }),
+      t""
+    }),
+    t({"", "  tasks:"}),
+    c(5, {
+      sn(nil, {
+        t({"", "    - name: \"Import role "}), i(1, "NAME"), t"\"",
+        t({"", "      ansible.builtin.import_role:"}),
+        t({"", "        name: "}), f(copy, 1),
+      }),
       sn(nil, {
         t({"", "    - name: \"Include role "}), i(1, "NAME"), t"\"",
         t({"", "      ansible.builtin.include_role:"}),
         t({"", "        name: "}), f(copy, 1),
+        t({"", "        apply: "}),
+        t({"", "          tags: "}),
+        t({"", "            - "}),
       }),
       sn(nil, {
         t({"", "    - name: \""}),
