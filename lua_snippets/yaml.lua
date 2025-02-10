@@ -176,15 +176,87 @@ local ansible_loop = function (args)
   })
 end
 
+local function read_galaxy_yml(path)
+  local galaxy_yml = io.open(path .. "/galaxy.yml", "r")
+  if not galaxy_yml then return nil end
+
+  local metadata = {}
+  for line in galaxy_yml:lines() do
+    local key, value = line:match("(%w+):%s*(.*)$")
+    if key and value then
+      value = value:gsub('^["\'](.-)["\']$', "%1")
+      metadata[key] = value
+    end
+  end
+
+  galaxy_yml:close()
+  return metadata
+end
+
+local function split_path (path)
+	local components = {}
+	for component in path:gmatch("[^/]+") do
+		table.insert(components, component)
+	end
+  return components
+end
+
+local function join_path (components)
+  return "/" .. table.concat(components, "/")
+end
+
+local function get_ansible_role_name (path_components)
+  -- Ansible Role Name
+  local galaxy_yml_path = join_path({ unpack(path_components, 1, #path_components-4) })
+  local galaxy_yml_data = read_galaxy_yml(galaxy_yml_path)
+
+  local role_name_components = {}
+  if galaxy_yml_data then
+    if galaxy_yml_data.namespace and galaxy_yml_data.name then
+      table.insert(role_name_components, galaxy_yml_data.namespace)
+      table.insert(role_name_components, galaxy_yml_data.name)
+    end
+  elseif path_components[#path_components-6] == "ansible_collections" then
+    table.insert(role_name_components, path_components[#path_components-5])
+    table.insert(role_name_components, path_components[#path_components-4])
+  end
+  table.insert(role_name_components, path_components[#path_components-2])
+  return table.concat(role_name_components, '.')
+end
+
+local function ansible_role_header (path_components)
+  -- Ansible Role File Type
+  local ansible_role_file_type = nil
+  if path_components[#path_components] == "argument_specs.yaml" then
+    ansible_role_file_type = "argument_specs"
+  else
+    ansible_role_file_type = path_components[#path_components-1]
+  end
+
+  local ansible_role_name = get_ansible_role_name(path_components)
+
+  return sn(nil, {
+    t("# " .. ansible_role_file_type .. " file for " .. ansible_role_name),
+  })
+end
+
+local function ansible_file_header (args)
+  local current_path_components = split_path(vim.api.nvim_buf_get_name(0))
+
+  if current_path_components[#current_path_components-3] == "roles" then
+    return ansible_role_header(current_path_components)
+  else
+    return sn(nil, {i(1)})
+  end
+end
+
 local snippets = {
 
   s("ansiblerole", {
-    t("---"),
-    t({"", "# "}), i(1, "tasks"), t({" file for "}), i(2, "role name"),
+    f(yamlbegin),
+    d(1, ansible_file_header),
     t({"", ""}),
     t({"", ""}), i(0),
-    t({"", ""}),
-    t({"", "# End of file"}),
   }),
 
   s("vars", {
