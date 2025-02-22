@@ -480,9 +480,6 @@ local snippets = {
     t({"", "      - \"" }), i(2, "AUTHOR"), t"\"",
     t({"", "    options:" }),
     t({"", "      " }), i(4),
-    t({"", ""}),
-    t({"", ""}),
-    t({"# End of file" })
   }),
 
   s("opt", {
@@ -510,7 +507,7 @@ local snippets = {
       if args[1][1] == "dict" or list_elements == "dict" then
         return sn(nil, {t({"", "  options:"}), t({"","    "}), i(1)})
       else
-        return sn(nil, {t({"", ""})})
+        return sn(nil, {i(1)})
       end
     end, {2, 3})
   }, {
