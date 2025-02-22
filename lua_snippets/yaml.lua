@@ -240,11 +240,29 @@ local function ansible_role_header (path_components)
   })
 end
 
+local function ansible_host_vars_header (path_components)
+  local host_name = path_components[#path_components-1]
+  return sn(nil, {
+    t("# ".. "host_vars file for " .. host_name)
+  })
+end
+
+local function ansible_group_vars_header (path_components)
+  local group_name = path_components[#path_components-1]
+  return sn(nil, {
+      t("# " .. "group_vars file for " .. group_name)
+    })
+end
+
 local function ansible_file_header (args)
   local current_path_components = split_path(vim.api.nvim_buf_get_name(0))
 
   if current_path_components[#current_path_components-3] == "roles" then
     return ansible_role_header(current_path_components)
+  elseif current_path_components[#current_path_components-2] == "host_vars" then
+    return ansible_host_vars_header(current_path_components)
+  elseif current_path_components[#current_path_components-2] == "group_vars" then
+    return ansible_group_vars_header(current_path_components)
   else
     return sn(nil, {i(1)})
   end
@@ -259,23 +277,30 @@ local snippets = {
     t({"", ""}), i(0),
   }),
 
-  s("vars", {
-    t("---"),
-    t({"", "# "}),
-    c(1, {
-      sn(nil, {t("host_vars file for "), i(1, "HOST")}),
-      sn(nil, {t("group_vars file for "), i(1, "GROUP")}),
-      sn(nil, {t("HOST VARS: "), i(1, "HOST")}),
-      sn(nil, {t("GROUP VARS: "), i(1, "GROUP")}),
+  s("ansiblevars", {
+    f(yamlbegin),
+    d(1, ansible_file_header),
+    t({"", ""}),
+    c(2, {
+      sn(nil, {
+        t({"", "# ---------- Global Variables ----------"}),
+        t({"", ""}),
+        t({"", ""}), i(1),
+      }),
+      sn(nil, {
+        i(1)
+      }),
     }),
-    t({"", ""}),
-    t({"", "# ---------- Global Variables ----------"}),
-    t({"", ""}), i(2),
-    t({"", ""}),
-    t({"", "# ---------- Role Variables ----------"}),
-    t({"", ""}), i(0),
-    t({"", ""}),
-    t({"", "# End of file"}),
+    c(3, {
+      sn(nil, {
+        t({"", "# ---------- Role Variables ----------"}),
+        t({"", ""}),
+        t({"", ""}), i(1),
+      }),
+      sn(nil, {
+        i(1)
+      }),
+    }),
   }),
 
   s("debug", {
