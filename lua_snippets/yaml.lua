@@ -446,7 +446,24 @@ local snippets = {
     t({"", "    label: \"{{ item.name }}\""}),
     t({"", "  when:"}),
     t({"", "    - item.value is defined"}),
-  })
+  }),
+
+  s("template", {
+    t({"- name: \""}), i(1, "Template X"), t"\"",
+    t({"", "  ansible.builtin.template:"}),
+    t({"", "    src: "}), i(2, "example.j2"),
+    t({"", "    dest: "}), i(3, "/path/to/remote/location"),
+    t({"", "    owner: "}), i(4, "root"),
+    t({"", "    group: "}), i(5, "root"),
+    t({"", "    mode: \""}), i(6, "0644"), t"\"", c(7, {
+      isn(nil, {
+        t({"", "become: true"}), i(1)
+      }, "  "),
+      isn(nil, {
+        i(1)
+      }, "  "),
+    }),
+  }),
 }
 
 return snippets
