@@ -21,7 +21,6 @@ return {
         "tohtml",
         "getscript",
         "getscriptPlugin",
-        "gzip",
         "logipat",
         "netrw",
         "netrwSettings",
