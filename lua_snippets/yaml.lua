@@ -168,10 +168,9 @@ local ansible_loop = function (args)
   return sn(nil, {
     t("loop: \"{{ "), i(1, "items"), t(" }}\""),
     t({"", "loop_control:"}),
-    t({"", "  loop_var: "}), i(2, "item"),
-    t({"", "  "}), c(3, {
+    t({"", "  loop_var: "}), i(2, "item"), c(3, {
         i(1),
-        sn(nil, { t("label: \"{{ "), i(1, "item.name | default('N/A')"), t(" }}\"") })
+        sn(nil, {t({"", "  "}), t("label: \"{{ "), i(1, "item.name | default('N/A')"), t(" }}\"") })
     }),
   })
 end
