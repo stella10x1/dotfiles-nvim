@@ -9,6 +9,7 @@ local c = ls.choice_node
 local d = ls.dynamic_node
 local isn = ls.indent_snippet_node
 local r = ls.restore_node
+local fmta = require("luasnip.extras.fmt").fmta
 
 -- functions for snippets
 local function copy(args)
