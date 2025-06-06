@@ -558,6 +558,23 @@ local snippets = {
       }, "  "),
     }),
   }),
+
+  s("ansiblemeta", fmta([[
+    dependencies: []
+
+    galaxy_info:
+      author: <author>
+      description: <description>
+      license: <license>
+
+      min_ansible_version: "2.15"
+
+      platforms: []
+  ]], {
+      author = i(1, "lingling"),
+      description = i(2, "This role does something."),
+      license = i(3, "The Unlicense")
+    }))
 }
 
 return snippets
