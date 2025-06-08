@@ -56,14 +56,10 @@ local on_attach = function(bufnr)
   map("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "Git Undo staging hunks to index" })
   map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "Git Reset all hunks in buffer to HEAD" })
   map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Git Preview diff of hunk" })
-  map("n", "<leader>gb", function()
+  map("n", "<leader>gB", function()
     gitsigns.blame_line { full = true }
   end, { desc = "Git Blame line under cursor" })
   map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Git Toggle blame line under cursor" })
-  map("n", "<leader>gd", gitsigns.diffthis, { desc = "Git Show side by side diff of buffer" })
-  map("n", "<leader>gD", function()
-    gitsigns.diffthis "~"
-  end)
   map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "Git Toggle showing lines in buffer" })
 
   -- Text object
