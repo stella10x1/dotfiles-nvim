@@ -57,12 +57,8 @@ map("n", "<leader>f.", function()
   return require("telescope.builtin").find_files { no_ignore = true, hidden = true }
 end, { desc = "Telescope Find all files (gitignored and hidden)" })
 
-map("n", "<leader>gc", function()
-  return require("telescope.builtin").git_commits()
-end, { desc = "Git Commit overview in Telescope" })
-
-map("n", "<leader>gs", function()
-  return require("telescope.builtin").git_status()
-end, { desc = "Git Status overview in Telescope" })
+map("n", "<leader>gb", function()
+  return require("telescope.builtin").git_branches()
+end, { desc = "Git Branch overview " })
 
 -- End of file.
