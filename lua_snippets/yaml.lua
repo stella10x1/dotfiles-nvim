@@ -574,7 +574,15 @@ local snippets = {
       author = i(1, "lingling"),
       description = i(2, "This role does something."),
       license = i(3, "The Unlicense")
-    }))
+    })),
+
+  s("import_playbook", fmta([[
+    - name: Import playbook <playbook_copy>
+      ansible.builtin.import_playbook: <playbook>
+  ]], {
+      playbook = i(1, "NAMESPACE.COLLECTION.PLAYBOOK"),
+      playbook_copy = f(copy, 1),
+    })),
 }
 
 return snippets
