@@ -39,6 +39,22 @@ end)
 
 require('mini.pick').setup()
 
+vim.keymap.set("n", "<leader>ff", function()
+  return require('mini.pick').builtin.files()
+end, { desc = "Pick all files (gitignored, but no hidden)" })
+
+vim.keymap.set("n", "<leader>fb", function()
+  return require('mini.pick').builtin.buffers()
+end, { desc = "Pick buffer" })
+
+vim.keymap.set("n", "<leader>fh", function()
+  return require('mini.pick').builtin.help()
+end, { desc = "Pick help tags" })
+
+vim.keymap.set("n", "<leader>fl", function()
+  return require('mini.pick').builtin.help()
+end, { desc = "Pick live grep" })
+
 -- Completion and LSP
 
 vim.lsp.enable({
