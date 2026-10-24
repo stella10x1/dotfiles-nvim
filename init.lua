@@ -14,7 +14,6 @@ vim.pack.add({
   { src = 'https://github.com/knubie/vim-kitty-navigator' },
   { src = 'https://github.com/saghen/blink.indent' },
   { src = 'https://github.com/stevearc/conform.nvim' },
-  { src = 'https://github.com/folke/snacks.nvim' },
 })
 
 -- Look and feel
@@ -23,10 +22,6 @@ vim.cmd.colorscheme("catppuccin")
 vim.keymap.set("n", "<leader>d", function()
   return vim.diagnostic.open_float()
 end, { desc = "Open float diagnostic" })
-
-vim.keymap.set("n", "<leader>D", function()
-  return vim.diagnostic.open_float()
-end, { desc = "Open location list of diagnostic events" })
 
 require('mini.statusline').setup()
 
@@ -47,39 +42,7 @@ vim.keymap.set("n", "<C-n>", function()
   MiniFiles.open()
 end)
 
--- Picker
-
-require("snacks").setup({
-  { picker = { enabled = true }},
-})
-
-vim.keymap.set("n", "<leader>P", function()
-  return require('snacks').picker()
-end, { desc = "Pick pickers (show all pickers)" })
-
-vim.keymap.set("n", "<leader>e", function()
-  return require('snacks').picker.explorer()
-end, { desc = "Open file explorer" })
-
-vim.keymap.set("n", "<leader>ff", function()
-  return require('snacks').picker.files()
-end, { desc = "Pick all files (gitignored, but no hidden)" })
-
-vim.keymap.set("n", "<leader>fb", function()
-  return require('snacks').picker.buffers()
-end, { desc = "Pick buffer" })
-
-vim.keymap.set("n", "<leader>fh", function()
-  return require('snacks').picker.help()
-end, { desc = "Pick help tags" })
-
-vim.keymap.set("n", "<leader>fl", function()
-  return require('snacks').picker.grep()
-end, { desc = "Pick live grep" })
-
-vim.keymap.set("n", "<leader>gb", function()
-  return require('snacks').picker.git_branches()
-end, { desc = "Pick git branches" })
+require("plugins.snacks")
 
 -- Completion and LSP
 
