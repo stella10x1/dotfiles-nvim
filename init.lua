@@ -19,6 +19,7 @@ vim.pack.add({
   { src = 'https://github.com/HiPhish/jinja.vim' },
   { src = 'https://github.com/folke/lazydev.nvim' },
   { src = 'https://github.com/dhruvasagar/vim-table-mode' },
+  { src = 'https://github.com/zk-org/zk-nvim' },
 })
 
 -- Look and feel
@@ -115,6 +116,8 @@ vim.keymap.set("n", "<leader>FF", function()
 end, { desc = "Buffer Code formatting" })
 
 vim.keymap.set("n", "<leader>tm", "<cmd> TableModeToggle<CR>", { desc = "Toggle Table Mode" })
+
+require("plugins.zk")
 
 require("plugins.neogit")
 require("plugins.opencode")
