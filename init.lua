@@ -45,6 +45,10 @@ require("snacks").setup({
   { picker = { enabled = true }},
 })
 
+vim.keymap.set("n", "<leader>P", function()
+  return require('snacks').picker()
+end, { desc = "Pick pickers (show all pickers)" })
+
 vim.keymap.set("n", "<leader>ff", function()
   return require('snacks').picker.files()
 end, { desc = "Pick all files (gitignored, but no hidden)" })
@@ -60,6 +64,10 @@ end, { desc = "Pick help tags" })
 vim.keymap.set("n", "<leader>fl", function()
   return require('snacks').picker.grep()
 end, { desc = "Pick live grep" })
+
+vim.keymap.set("n", "<leader>gb", function()
+  return require('snacks').picker.git_branches()
+end, { desc = "Pick git branches" })
 
 -- Completion and LSP
 
