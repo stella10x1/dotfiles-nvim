@@ -20,6 +20,14 @@ vim.pack.add({
 -- Look and feel
 vim.cmd.colorscheme("catppuccin")
 
+vim.keymap.set("n", "<leader>d", function()
+  return vim.diagnostic.open_float()
+end, { desc = "Open float diagnostic" })
+
+vim.keymap.set("n", "<leader>D", function()
+  return vim.diagnostic.open_float()
+end, { desc = "Open location list of diagnostic events" })
+
 require('mini.statusline').setup()
 
 -- Required for mini.files and mini.pick
