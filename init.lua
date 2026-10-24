@@ -110,3 +110,5 @@ require('conform').setup({
 vim.keymap.set("n", "<leader>FF", function()
   require("conform").format()
 end, { desc = "Buffer Code formatting" })
+
+require("plugins.neogit")
