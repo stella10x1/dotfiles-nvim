@@ -1,51 +1,75 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+-- globals
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.g.man_hardwrap = 0
--- will be used by NvChad to load lua snippets
-vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua_snippets"
 
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+require('mappings.default')
+require('options')
 
-if not vim.uv.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
-end
+vim.pack.add({
+  { src = 'https://github.com/nvim-mini/mini.nvim', },
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+  { src = 'https://github.com/rafamadriz/friendly-snippets' },
+  { src = 'https://github.com/folke/which-key.nvim' },
+})
 
-vim.opt.rtp:prepend(lazypath)
+-- Look and feel
+vim.cmd.colorscheme("catppuccin")
 
-local lazy_config = require "configs.lazy"
+require('mini.statusline').setup()
 
--- load plugins
-require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
+-- Required for mini.files and mini.pick
+require('mini.icons').setup()
+
+require('which-key').setup()
+
+-- File Browser
+
+require('mini.files').setup({
+  windows = {
+    preview = true,
   },
+})
 
-  { import = "plugins" },
-}, lazy_config)
-
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
-
-require "options"
-require "nvchad.autocmds"
-
-vim.schedule(function()
-  require "mappings.default"
+vim.keymap.set("n", "<C-n>", function()
+  MiniFiles.open()
 end)
 
--- load custom filetype detection definitions
-require("filetypes-custom")
+-- Picker
 
--- load custom highlight groups
-require("hl-groups-custom")
+require('mini.pick').setup()
 
--- load user commands
-require "user_commands"
-require "autocmd"
+-- Completion and LSP
+
+vim.lsp.enable({
+  "lua_ls",
+  "pyright",
+})
+
+local gen_loader = require('mini.snippets').gen_loader
+
+require('mini.snippets').setup({
+  -- mappings = {
+  --   jump_next = '<TAB>',
+  --   jump_prev = '<S-TAB>',
+  -- },
+
+  snippets = {
+    -- Load custom file with global snippets first (adjust for Windows)
+    gen_loader.from_file('~/.config/nvim/snippets/global.json'),
+
+    -- Load snippets based on current language by reading files from
+    -- "snippets/" subdirectories from 'runtimepath' directories.
+    gen_loader.from_lang(),
+  },
+})
+
+require('mini.snippets').start_lsp_server({ match = false })
+
+require('mini.completion').setup()
+
+require('mini.cmdline').setup()
+
+require('mini.git').setup()
+
+require('mini.diff').setup()

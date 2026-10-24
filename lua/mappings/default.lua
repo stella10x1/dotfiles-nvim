@@ -1,5 +1,3 @@
-require "nvchad.mappings"
-
 local map = vim.keymap.set
 local nomap = vim.keymap.del
 
@@ -23,7 +21,7 @@ map("n", "<leader><leader>", function()
 end, { desc = "Notes Open scratchpad note" })
 
 -- insert mode
-map("i", "<C-s>", "<ESC>:w<CR>", { desc = "File Save the buffer and leave insert mode" })
+--map("i", "<C-s>", "<ESC>:w<CR>", { desc = "File Save the buffer and leave insert mode" })
 map("i", "<M-p>", "<ESC>:bprevious<CR>", { desc = "Buffer Leave insert and jump to previous buffer" })
 map("i", "<M-n>", "<ESC>:bnext<CR>", { desc = "Buffer Leave insert and jump to next buffer" })
 map("i", "<C-v>", '<ESC>"+pa', { desc = "Paste from clipboard" })
@@ -42,31 +40,3 @@ map("t", "<C-j>", "<C-\\><C-N><C-w>j", { desc = "Terminal Leave insert and move 
 map("t", "<C-k>", "<C-\\><C-N><C-w>k", { desc = "Terminal Leave insert and move up" })
 map("t", "<C-h>", "<C-\\><C-N><C-w>h", { desc = "Terminal Leave insert and move left" })
 map("t", "<C-l>", "<C-\\><C-N><C-w>l", { desc = "Terminal Leave insert and move right" })
-
-------------------------------------------------------------
--- NvChad Default Plugin Mappings
-------------------------------------------------------------
-
-
-nomap("n", "<leader>th") -- default for NvChad theme selector
-
-nomap("n", "<leader>h") -- default for open horizontal term
-nomap("n", "<leader>v") -- default for open vertical term
-nomap("i", "<C-h>")
-nomap("i", "<C-j>")
-nomap("i", "<C-k>")
-nomap("i", "<C-l>")
-
--- general functions
-map("n", "<leader>tt", function()
-  return require("base46").toggle_theme()
-end, { desc = "Toggle Theme" })
-
--- new terminals
-map("n", "<leader>H", function()
-  require("nvchad.term").new { pos = "sp" }
-end, { desc = "terminal new horizontal term" })
-
-map("n", "<leader>V", function()
-  require("nvchad.term").new { pos = "vsp" }
-end, { desc = "terminal new vertical window" })
