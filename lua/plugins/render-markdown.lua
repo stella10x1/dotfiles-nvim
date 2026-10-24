@@ -1,15 +1,15 @@
 -- plugin file for render-markdown.
 
-return {
-  "MeanderingProgrammer/render-markdown.nvim",
-  dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-  ---@module 'render-markdown'
-  ---@type render.md.UserConfig
-  opts = require "configs.render-markdown",
-  cmd = { "RenderMarkdown" },
-  init = function()
-    require "mappings.render-markdown"
-  end,
+vim.pack.add {
+  { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 }
 
--- End of file.
+require("render-markdown").setup {
+  anti_conceal = {
+    enabled = false,
+  },
+  enabled = true,
+  file_types = { "markdown", "opencode_output" },
+}
+
+vim.keymap.set("n", "<leader>tr", "<cmd> RenderMarkdown toggle<CR>", { desc = "Toggle Rendering markdown" })
