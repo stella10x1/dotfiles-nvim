@@ -133,7 +133,7 @@ require('conform').setup({
     json = { "prettier" },
     lua = { "stylua" },
     markdown = { "markdownlint-cli2" },
-    python = { "black" },
+    python = { "ruff_format", "ruff_organize_imports", "ruff_fix" },
     yaml = { "prettier" },
   },
 })
