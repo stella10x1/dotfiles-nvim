@@ -103,6 +103,14 @@ require('mini.snippets').start_lsp_server({ match = false })
 
 require('mini.completion').setup()
 
+vim.api.nvim_create_autocmd("FileType", {
+  -- Disable mini completion in snacks picker
+  pattern = "snacks_picker_input",
+  callback = function()
+    vim.b.minicompletion_disable = true
+  end,
+})
+
 require('mini.cmdline').setup()
 
 require('mini.git').setup()
