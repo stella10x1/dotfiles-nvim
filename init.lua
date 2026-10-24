@@ -106,5 +106,6 @@ vim.keymap.set("n", "<leader>FF", function()
 end, { desc = "Buffer Code formatting" })
 
 require("plugins.neogit")
+require("plugins.opencode")
 require("plugins.render-markdown")
 require("plugins.tree-sitter-manager")
