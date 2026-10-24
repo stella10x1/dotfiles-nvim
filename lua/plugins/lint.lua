@@ -7,6 +7,7 @@ vim.pack.add({
 local lint = require "lint"
 
 lint.linters_by_ft = {
+  cpp = { "cppcheck", args = { "--project=compile_commands.json"} },
   markdown = { "markdownlint-cli2" },
 }
 
