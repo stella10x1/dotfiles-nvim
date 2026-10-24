@@ -49,6 +49,10 @@ vim.keymap.set("n", "<leader>P", function()
   return require('snacks').picker()
 end, { desc = "Pick pickers (show all pickers)" })
 
+vim.keymap.set("n", "<leader>e", function()
+  return require('snacks').picker.explorer()
+end, { desc = "Open file explorer" })
+
 vim.keymap.set("n", "<leader>ff", function()
   return require('snacks').picker.files()
 end, { desc = "Pick all files (gitignored, but no hidden)" })
