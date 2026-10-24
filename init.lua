@@ -14,6 +14,7 @@ vim.pack.add({
   { src = 'https://github.com/knubie/vim-kitty-navigator' },
   { src = 'https://github.com/saghen/blink.indent' },
   { src = 'https://github.com/stevearc/conform.nvim' },
+  { src = 'https://github.com/folke/snacks.nvim' },
 })
 
 -- Look and feel
@@ -40,22 +41,24 @@ end)
 
 -- Picker
 
-require('mini.pick').setup()
+require("snacks").setup({
+  { picker = { enabled = true }},
+})
 
 vim.keymap.set("n", "<leader>ff", function()
-  return require('mini.pick').builtin.files()
+  return require('snacks').picker.files()
 end, { desc = "Pick all files (gitignored, but no hidden)" })
 
 vim.keymap.set("n", "<leader>fb", function()
-  return require('mini.pick').builtin.buffers()
+  return require('snacks').picker.buffers()
 end, { desc = "Pick buffer" })
 
 vim.keymap.set("n", "<leader>fh", function()
-  return require('mini.pick').builtin.help()
+  return require('snacks').picker.help()
 end, { desc = "Pick help tags" })
 
 vim.keymap.set("n", "<leader>fl", function()
-  return require('mini.pick').builtin.help()
+  return require('snacks').picker.grep()
 end, { desc = "Pick live grep" })
 
 -- Completion and LSP
