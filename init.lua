@@ -14,6 +14,7 @@ vim.pack.add({
   { src = 'https://github.com/knubie/vim-kitty-navigator' },
   { src = 'https://github.com/saghen/blink.indent' },
   { src = 'https://github.com/stevearc/conform.nvim' },
+  { src = 'https://github.com/jghauser/follow-md-links.nvim' },
 })
 
 -- Look and feel
