@@ -1,12 +1,11 @@
 -- plugin file for vimtex.
 
-return {
-  "lervag/vimtex",
-  -- vimtex is mostly a ftplugin and therefore naturally "lazy loaded".
-  lazy = false,
-  config = function()
-    require "configs.vimtex"
-  end,
+vim.pack.add {
+  { src = "https://github.com/lervag/vimtex" },
 }
 
--- End of file.
+vim.g.vimtex_view_method = "zathura"
+-- enable offline documentation
+vim.g.vimtex_doc_handlers = { "vimtex#doc#handlers#texdoc" }
+-- disable completion, because it is handled by LSP (texlab)
+vim.g.vimtex_complete_enabled = 0
