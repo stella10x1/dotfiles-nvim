@@ -3,8 +3,32 @@ vim.pack.add {
 }
 
 require("snacks").setup {
-  { picker = { enabled = true } },
+  picker = { enabled = true },
 }
+
+-- Terminal Keymaps (formerly provided by NvChad)
+
+-- toggleable terminals, the env makes each position its own terminal
+vim.keymap.set({ "n", "t" }, "<A-h>", function()
+  return require("snacks").terminal.toggle(nil, { env = { SNACKS_TERM = "horizontal" }, win = { position = "bottom" } })
+end, { desc = "Terminal Toggle horizontal term" })
+
+vim.keymap.set({ "n", "t" }, "<A-v>", function()
+  return require("snacks").terminal.toggle(nil, { env = { SNACKS_TERM = "vertical" }, win = { position = "right" } })
+end, { desc = "Terminal Toggle vertical term" })
+
+vim.keymap.set({ "n", "t" }, "<A-i>", function()
+  return require("snacks").terminal.toggle(nil, { env = { SNACKS_TERM = "float" }, win = { position = "float" } })
+end, { desc = "Terminal Toggle floating term" })
+
+-- new terminals
+vim.keymap.set("n", "<leader>H", function()
+  return require("snacks").terminal.open(nil, { win = { position = "bottom" } })
+end, { desc = "Terminal New horizontal term" })
+
+vim.keymap.set("n", "<leader>V", function()
+  return require("snacks").terminal.open(nil, { win = { position = "right" } })
+end, { desc = "Terminal New vertical term" })
 
 -- Picker Keymaps
 
