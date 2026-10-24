@@ -1,29 +1,34 @@
 # Dotfiles Neovim
 
-This are my [Neovim](https://neovim.io/) dotfiles utilizing
-[NvChad](https://github.com/NvChad/NvChad).
+This are my [Neovim](https://neovim.io/) dotfiles.
 
+> [!note]
+> In the past this configuration was based on [NvChad][NvChad]. However, my
+> ideas shifted and so I started to configure the plugins from scratch. I also
+> migrated from [lazy.nvim][lazy.nvim] to Neovim's own plugin manager
+> `vim.pack`.
 
-# Installation
+## Installation
 
-    git clone https://codeberg.org/lingling/dotfiles-nvim ~/.config/nvim
+1. Clone the repository:
 
-  Install packages on Arch Linux:
+    ```bash
+    git clone https://github.com/stella10x1/dotfiles-nvim ~/.config/nvim
+    ```
 
-    nvim -l ~/.config/nvim/scripts/packages.lua pacman | sudo pacman -S --needed -
+2. Install packages on Arch Linux:
 
-# License and re-use
+    ```bash
+    nvim -l ~/.config/nvim/scripts/packages.lua pacman |
+      sudo pacman -S --needed -
+    ```
+
+## License and re-use
 
 The code in this dotfile repository is licensed under [the Unlicense](./LICENSE)
 (also see [unlicense.org](https://unlicense.org/)).
 
 Feel free to use any code of this repository in your dotfiles!
 
-
-# See also
-
-- [NvChad](https://github.com/NvChad/NvChad): Beautiful Neovim base
-configuration, which contains the most important plugins with solid defaults and
-a wonderful UI. Nothing more.
-- The [starter config](https://github.com/NvChad/starter) to utilize NvChad as a
-plugin. This dotfiles are based on it.
+[NvChad]: https://github.com/NvChad/NvChad
+[lazy.nvim]: https://lazy.folke.io/
