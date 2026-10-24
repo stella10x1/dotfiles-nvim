@@ -35,7 +35,6 @@ map("v", "<C-x>", '"+d', { desc = "Cut to system clipboard" })
 map("s", "<C-s>", "<ESC>:w<CR>", { desc = "File Save the buffer and leave select mode" })
 map("s", "<C-v>", '<DEL>"+Pa', { desc = "Paste from system clipboard" })
 
-map("t", "<ESC>", "<C-\\><C-N>", { desc = "Terminal Leave insert mode" })
 map("t", "<C-j>", "<C-\\><C-N><C-w>j", { desc = "Terminal Leave insert and move down" })
 map("t", "<C-k>", "<C-\\><C-N><C-w>k", { desc = "Terminal Leave insert and move up" })
 map("t", "<C-h>", "<C-\\><C-N><C-w>h", { desc = "Terminal Leave insert and move left" })

@@ -6,6 +6,13 @@ require("snacks").setup {
   picker = { enabled = true },
 }
 
+-- Terminal
+
+-- replacement for :terminal, without a command a shell opens in a split, otherwise a float
+vim.api.nvim_create_user_command("Term", function(opts)
+  require("snacks").terminal.open(opts.args ~= "" and opts.args or nil)
+end, { nargs = "*", complete = "shellcmd", desc = "Open snacks terminal" })
+
 -- Terminal Keymaps (formerly provided by NvChad)
 
 -- toggleable terminals, the env makes each position its own terminal
