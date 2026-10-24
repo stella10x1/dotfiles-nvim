@@ -107,3 +107,4 @@ end, { desc = "Buffer Code formatting" })
 
 require("plugins.neogit")
 require("plugins.render-markdown")
+require("plugins.tree-sitter-manager")
