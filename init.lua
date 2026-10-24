@@ -18,6 +18,7 @@ vim.pack.add({
   { src = 'https://gitlab.com/HiPhish/info.vim' },
   { src = 'https://github.com/HiPhish/jinja.vim' },
   { src = 'https://github.com/folke/lazydev.nvim' },
+  { src = 'https://github.com/dhruvasagar/vim-table-mode' },
 })
 
 -- Look and feel
@@ -112,6 +113,8 @@ require('conform').setup({
 vim.keymap.set("n", "<leader>FF", function()
   require("conform").format()
 end, { desc = "Buffer Code formatting" })
+
+vim.keymap.set("n", "<leader>tm", "<cmd> TableModeToggle<CR>", { desc = "Toggle Table Mode" })
 
 require("plugins.neogit")
 require("plugins.opencode")
