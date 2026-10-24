@@ -1,15 +1,20 @@
 -- plugin file for lazydev.
 
-return {
-  {
-    "folke/lazydev.nvim",
-    ft = "lua",
-    opts = require("configs.lazydev").lazydev,
+require("lazydev").setup {
+  library = {
+    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
   },
-  {
-    "hrsh7th/nvim-cmp",
-    opts = require("configs.lazydev").cmp,
+  integrations = {
+    cmp = false,
   },
+  enabled = function(root_dir)
+    -- explicit per-project override via exrc wins
+    if vim.g.lazydev_enabled ~= nil then
+      return vim.g.lazydev_enabled
+    end
+    -- projects with their own .luarc.json aren't Neovim config/plugins
+    return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
+  end,
 }
 
 -- End of file.
