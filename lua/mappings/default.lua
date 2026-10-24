@@ -35,7 +35,8 @@ map("v", "<C-x>", '"+d', { desc = "Cut to system clipboard" })
 map("s", "<C-s>", "<ESC>:w<CR>", { desc = "File Save the buffer and leave select mode" })
 map("s", "<C-v>", '<DEL>"+Pa', { desc = "Paste from system clipboard" })
 
-map("t", "<C-j>", "<C-\\><C-N><C-w>j", { desc = "Terminal Leave insert and move down" })
-map("t", "<C-k>", "<C-\\><C-N><C-w>k", { desc = "Terminal Leave insert and move up" })
-map("t", "<C-h>", "<C-\\><C-N><C-w>h", { desc = "Terminal Leave insert and move left" })
-map("t", "<C-l>", "<C-\\><C-N><C-w>l", { desc = "Terminal Leave insert and move right" })
+-- vim-kitty-navigator only maps normal mode
+map("t", "<C-j>", "<C-\\><C-N><cmd>KittyNavigateDown<CR>", { desc = "Terminal Leave insert and move down (or kitty pane)" })
+map("t", "<C-k>", "<C-\\><C-N><cmd>KittyNavigateUp<CR>", { desc = "Terminal Leave insert and move up (or kitty pane)" })
+map("t", "<C-h>", "<C-\\><C-N><cmd>KittyNavigateLeft<CR>", { desc = "Terminal Leave insert and move left (or kitty pane)" })
+map("t", "<C-l>", "<C-\\><C-N><cmd>KittyNavigateRight<CR>", { desc = "Terminal Leave insert and move right (or kitty pane)" })
