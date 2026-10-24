@@ -6,10 +6,7 @@ vim.pack.add({
 
 local lint = require "lint"
 
-lint.linters_by_ft = {
-  cpp = { "cppcheck", args = { "--project=compile_commands.json"} },
-  markdown = { "markdownlint-cli2" },
-}
+lint.linters_by_ft = require("tools").linters_by_ft()
 
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
   callback = function()

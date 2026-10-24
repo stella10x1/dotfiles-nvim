@@ -49,12 +49,7 @@ require("plugins.snacks")
 
 -- Completion and LSP
 
-vim.lsp.enable({
-  "clangd",
-  "lua_ls",
-  "pyright",
-  "bashls",
-})
+vim.lsp.enable(require("tools").lsp())
 
 require("lazydev").setup {
   library = {
@@ -110,19 +105,7 @@ require('mini.git').setup()
 require('mini.diff').setup()
 
 require('conform').setup({
-  formatters_by_ft = {
-    c = { "clang-format" },
-    cmake = { "gersemi" },
-    cpp = { "clang-format" },
-    css = { "prettier" },
-    html = { "prettier" },
-    javascript = { "prettier" },
-    json = { "prettier" },
-    lua = { "stylua" },
-    markdown = { "markdownlint-cli2" },
-    python = { "ruff_format", "ruff_organize_imports", "ruff_fix" },
-    yaml = { "prettier" },
-  },
+  formatters_by_ft = require("tools").formatters_by_ft(),
 })
 
 vim.keymap.set("n", "<leader>FF", function()

@@ -8,6 +8,9 @@ This are my [Neovim](https://neovim.io/) dotfiles utilizing
 
     git clone https://codeberg.org/lingling/dotfiles-nvim ~/.config/nvim
 
+  Install packages on Arch Linux:
+
+    nvim -l ~/.config/nvim/scripts/packages.lua pacman | sudo pacman -S --needed -
 
 # License and re-use
 
