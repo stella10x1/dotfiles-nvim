@@ -54,37 +54,8 @@ require("plugins.snacks")
 
 vim.lsp.enable(require("tools").lsp())
 
-local gen_loader = require('mini.snippets').gen_loader
-
-require('mini.snippets').setup({
-  -- mappings = {
-  --   jump_next = '<TAB>',
-  --   jump_prev = '<S-TAB>',
-  -- },
-
-  snippets = {
-    -- Load custom file with global snippets first (adjust for Windows)
-    gen_loader.from_file('~/.config/nvim/snippets/global.json'),
-
-    -- Load snippets based on current language by reading files from
-    -- "snippets/" subdirectories from 'runtimepath' directories.
-    gen_loader.from_lang(),
-  },
-})
-
-require('mini.snippets').start_lsp_server({ match = false })
-
-require('mini.completion').setup()
-
-vim.api.nvim_create_autocmd("FileType", {
-  -- Disable mini completion in snacks picker
-  pattern = "snacks_picker_input",
-  callback = function()
-    vim.b.minicompletion_disable = true
-  end,
-})
-
-require('mini.cmdline').setup()
+require("plugins.luasnip")
+require("plugins.blink")
 
 require('mini.git').setup()
 
