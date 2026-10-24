@@ -11,7 +11,9 @@ vim.pack.add({
   { src = 'https://github.com/neovim/nvim-lspconfig' },
   { src = 'https://github.com/rafamadriz/friendly-snippets' },
   { src = 'https://github.com/folke/which-key.nvim' },
-  { src = 'https://github.com/knubie/vim-kitty-navigator' }
+  { src = 'https://github.com/knubie/vim-kitty-navigator' },
+  { src = 'https://github.com/saghen/blink.indent' },
+  { src = 'https://github.com/stevearc/conform.nvim' },
 })
 
 -- Look and feel
@@ -61,6 +63,7 @@ end, { desc = "Pick live grep" })
 vim.lsp.enable({
   "lua_ls",
   "pyright",
+  "bashls",
 })
 
 local gen_loader = require('mini.snippets').gen_loader
@@ -90,3 +93,20 @@ require('mini.cmdline').setup()
 require('mini.git').setup()
 
 require('mini.diff').setup()
+
+require('conform').setup({
+  formatters_by_ft = {
+    css = { "prettier" },
+    html = { "prettier" },
+    javascript = { "prettier" },
+    json = { "prettier" },
+    lua = { "stylua" },
+    markdown = { "markdownlint-cli2" },
+    python = { "black" },
+    yaml = { "prettier" },
+  },
+})
+
+vim.keymap.set("n", "<leader>FF", function()
+  require("conform").format()
+end, { desc = "Buffer Code formatting" })
