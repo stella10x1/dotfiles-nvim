@@ -16,6 +16,7 @@ vim.pack.add({
   { src = 'https://github.com/stevearc/conform.nvim' },
   { src = 'https://github.com/jghauser/follow-md-links.nvim' },
   { src = 'https://gitlab.com/HiPhish/info.vim' },
+  { src = 'https://github.com/HiPhish/jinja.vim' },
   { src = 'https://github.com/folke/lazydev.nvim' },
 })
 
