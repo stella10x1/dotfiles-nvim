@@ -49,6 +49,7 @@ require("plugins.snacks")
 -- Completion and LSP
 
 vim.lsp.enable({
+  "clangd",
   "lua_ls",
   "pyright",
   "bashls",
@@ -92,6 +93,9 @@ require('mini.diff').setup()
 
 require('conform').setup({
   formatters_by_ft = {
+    c = { "clang-format" },
+    cmake = { "gersemi" },
+    cpp = { "clang-format" },
     css = { "prettier" },
     html = { "prettier" },
     javascript = { "prettier" },
