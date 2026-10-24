@@ -11,6 +11,7 @@ vim.pack.add({
   { src = 'https://github.com/neovim/nvim-lspconfig' },
   { src = 'https://github.com/rafamadriz/friendly-snippets' },
   { src = 'https://github.com/folke/which-key.nvim' },
+  { src = 'https://github.com/knubie/vim-kitty-navigator' }
 })
 
 -- Look and feel
