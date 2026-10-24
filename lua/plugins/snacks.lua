@@ -99,6 +99,24 @@ vim.keymap.set("n", "<leader>fT", function()
   return require("snacks").picker.colorschemes()
 end, { desc = "Pick themes (colorschemes)" })
 
+vim.keymap.set("n", "<leader>fx", function()
+  local items = {}
+  for _, term in ipairs(require("snacks").terminal.list()) do
+    local title = vim.b[term.buf].term_title or vim.api.nvim_buf_get_name(term.buf)
+    table.insert(items, { text = title, buf = term.buf, term = term })
+  end
+  return require("snacks").picker.pick {
+    title = "Terminals",
+    items = items,
+    format = "text",
+    -- show the terminal in its own snacks window instead of the current one
+    confirm = function(picker, item)
+      picker:close()
+      item.term:show():focus()
+    end,
+  }
+end, { desc = "Pick running terminals" })
+
 vim.keymap.set("n", "<leader>fz", function()
   return require("snacks").picker.spelling()
 end, { desc = "Pick spell corrections" })
