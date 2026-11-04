@@ -7,7 +7,6 @@ require('mappings.default')
 require('options')
 
 vim.pack.add({
-  { src = 'https://github.com/folke/which-key.nvim' },
   { src = 'https://github.com/knubie/vim-kitty-navigator' },
   { src = 'https://github.com/saghen/blink.indent' },
   { src = 'https://github.com/jghauser/follow-md-links.nvim' },
@@ -21,7 +20,7 @@ vim.cmd.colorscheme("catppuccin")
 
 require("plugins.mini")
 
-require('which-key').setup()
+require("plugins.which-key")
 
 require("plugins.snacks")
 
