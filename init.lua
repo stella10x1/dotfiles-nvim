@@ -7,7 +7,6 @@ require('mappings.default')
 require('options')
 
 vim.pack.add({
-  { src = 'https://github.com/nvim-mini/mini.nvim', },
   { src = 'https://github.com/neovim/nvim-lspconfig' },
   { src = 'https://github.com/rafamadriz/friendly-snippets' },
   { src = 'https://github.com/folke/which-key.nvim' },
@@ -26,24 +25,9 @@ vim.keymap.set("n", "<leader>d", function()
   return vim.diagnostic.open_float()
 end, { desc = "Open float diagnostic" })
 
-require('mini.statusline').setup()
-
--- Required for mini.files and mini.pick
-require('mini.icons').setup()
+require("plugins.mini")
 
 require('which-key').setup()
-
--- File Browser
-
-require('mini.files').setup({
-  windows = {
-    preview = true,
-  },
-})
-
-vim.keymap.set("n", "<C-n>", function()
-  MiniFiles.open()
-end)
 
 require("plugins.snacks")
 
@@ -55,10 +39,6 @@ vim.lsp.enable(require("tools").lsp())
 
 require("plugins.luasnip")
 require("plugins.blink")
-
-require('mini.git').setup()
-
-require('mini.diff').setup()
 
 require("plugins.conform")
 
