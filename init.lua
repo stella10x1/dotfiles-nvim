@@ -6,10 +6,6 @@ vim.g.man_hardwrap = 0
 require('mappings.default')
 require('options')
 
-vim.pack.add({
-  { src = 'https://github.com/HiPhish/jinja.vim' },
-})
-
 -- Look and feel
 vim.cmd.colorscheme("catppuccin")
 
@@ -35,6 +31,7 @@ require("plugins.conform")
 require("plugins.table-mode")
 require("plugins.follow-md-links")
 require("plugins.info")
+require("plugins.jinja")
 
 require("plugins.zk")
 
