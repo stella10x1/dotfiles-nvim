@@ -13,7 +13,6 @@ vim.pack.add({
   { src = 'https://github.com/folke/which-key.nvim' },
   { src = 'https://github.com/knubie/vim-kitty-navigator' },
   { src = 'https://github.com/saghen/blink.indent' },
-  { src = 'https://github.com/stevearc/conform.nvim' },
   { src = 'https://github.com/jghauser/follow-md-links.nvim' },
   { src = 'https://gitlab.com/HiPhish/info.vim' },
   { src = 'https://github.com/HiPhish/jinja.vim' },
@@ -61,13 +60,7 @@ require('mini.git').setup()
 
 require('mini.diff').setup()
 
-require('conform').setup({
-  formatters_by_ft = require("tools").formatters_by_ft(),
-})
-
-vim.keymap.set("n", "<leader>FF", function()
-  require("conform").format()
-end, { desc = "Buffer Code formatting" })
+require("plugins.conform")
 
 vim.keymap.set("n", "<leader>tm", "<cmd> TableModeToggle<CR>", { desc = "Toggle Table Mode" })
 
