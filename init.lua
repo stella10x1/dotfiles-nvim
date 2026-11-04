@@ -7,7 +7,6 @@ require('mappings.default')
 require('options')
 
 vim.pack.add({
-  { src = 'https://github.com/jghauser/follow-md-links.nvim' },
   { src = 'https://gitlab.com/HiPhish/info.vim' },
   { src = 'https://github.com/HiPhish/jinja.vim' },
 })
@@ -35,6 +34,7 @@ require("plugins.blink")
 require("plugins.conform")
 
 require("plugins.table-mode")
+require("plugins.follow-md-links")
 
 require("plugins.zk")
 
