@@ -17,7 +17,6 @@ vim.pack.add({
   { src = 'https://gitlab.com/HiPhish/info.vim' },
   { src = 'https://github.com/HiPhish/jinja.vim' },
   { src = 'https://github.com/dhruvasagar/vim-table-mode' },
-  { src = 'https://github.com/zk-org/zk-nvim' },
 })
 
 -- Look and feel

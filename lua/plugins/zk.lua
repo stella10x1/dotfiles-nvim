@@ -1,5 +1,9 @@
 -- plugin file for zk.nvim.
 
+vim.pack.add {
+  { src = "https://github.com/zk-org/zk-nvim" },
+}
+
 local map = vim.keymap.set
 
 require("zk").setup({
@@ -41,7 +45,7 @@ end, { desc = "Zk Creates or opens daily journal note (for today)" })
 
 map("n", "<leader>zg", function()
   local zk_notebook_dir = os.getenv "ZK_NOTEBOOK_DIR"
-  require("telescope.builtin").live_grep { search_dirs = { zk_notebook_dir } }
+  require("snacks").picker.grep { dirs = { zk_notebook_dir } }
 end, { desc = "Zk Live grep over notebook directory" })
 
 map("n", "<leader>zj", function()
