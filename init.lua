@@ -7,7 +7,6 @@ require('mappings.default')
 require('options')
 
 vim.pack.add({
-  { src = 'https://github.com/neovim/nvim-lspconfig' },
   { src = 'https://github.com/folke/which-key.nvim' },
   { src = 'https://github.com/knubie/vim-kitty-navigator' },
   { src = 'https://github.com/saghen/blink.indent' },
@@ -20,10 +19,6 @@ vim.pack.add({
 -- Look and feel
 vim.cmd.colorscheme("catppuccin")
 
-vim.keymap.set("n", "<leader>d", function()
-  return vim.diagnostic.open_float()
-end, { desc = "Open float diagnostic" })
-
 require("plugins.mini")
 
 require('which-key').setup()
@@ -34,7 +29,7 @@ require("plugins.snacks")
 
 require("plugins.lazydev")
 
-vim.lsp.enable(require("tools").lsp())
+require("plugins.lsp")
 
 require("plugins.luasnip")
 require("plugins.blink")
