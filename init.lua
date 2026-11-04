@@ -7,7 +7,6 @@ require('mappings.default')
 require('options')
 
 vim.pack.add({
-  { src = 'https://github.com/saghen/blink.indent' },
   { src = 'https://github.com/jghauser/follow-md-links.nvim' },
   { src = 'https://gitlab.com/HiPhish/info.vim' },
   { src = 'https://github.com/HiPhish/jinja.vim' },
@@ -17,6 +16,7 @@ vim.pack.add({
 vim.cmd.colorscheme("catppuccin")
 
 require("plugins.mini")
+require("plugins.blink-indent")
 
 require("plugins.which-key")
 require("plugins.kitty-navigator")
