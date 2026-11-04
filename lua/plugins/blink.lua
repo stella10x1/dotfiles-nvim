@@ -9,6 +9,17 @@ require("blink.cmp").setup {
   snippets = { preset = "luasnip" },
   sources = {
     default = { "lsp", "path", "snippets", "buffer" },
+    per_filetype = {
+      lua = { inherit_defaults = true, "lazydev" },
+    },
+    providers = {
+      lazydev = {
+        name = "LazyDev",
+        module = "lazydev.integrations.blink",
+        -- make lazydev completions top priority
+        score_offset = 100,
+      },
+    },
   },
 }
 

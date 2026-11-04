@@ -16,7 +16,6 @@ vim.pack.add({
   { src = 'https://github.com/jghauser/follow-md-links.nvim' },
   { src = 'https://gitlab.com/HiPhish/info.vim' },
   { src = 'https://github.com/HiPhish/jinja.vim' },
-  { src = 'https://github.com/folke/lazydev.nvim' },
   { src = 'https://github.com/dhruvasagar/vim-table-mode' },
   { src = 'https://github.com/zk-org/zk-nvim' },
 })
@@ -50,6 +49,8 @@ end)
 require("plugins.snacks")
 
 -- Completion and LSP
+
+require("plugins.lazydev")
 
 vim.lsp.enable(require("tools").lsp())
 
