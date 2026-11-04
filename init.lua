@@ -11,7 +11,6 @@ vim.pack.add({
   { src = 'https://github.com/jghauser/follow-md-links.nvim' },
   { src = 'https://gitlab.com/HiPhish/info.vim' },
   { src = 'https://github.com/HiPhish/jinja.vim' },
-  { src = 'https://github.com/dhruvasagar/vim-table-mode' },
 })
 
 -- Look and feel
@@ -35,7 +34,7 @@ require("plugins.blink")
 
 require("plugins.conform")
 
-vim.keymap.set("n", "<leader>tm", "<cmd> TableModeToggle<CR>", { desc = "Toggle Table Mode" })
+require("plugins.table-mode")
 
 require("plugins.zk")
 
