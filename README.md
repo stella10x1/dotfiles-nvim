@@ -1,4 +1,9 @@
-# Dotfiles Neovim
+<div align="center">
+  <h1>
+    dotfiles-nvim<br>
+    <img src="assets/icon.png" alt="dotfiles-nvim icon" width="254">
+  </h1>
+</div>
 
 This are my [Neovim](https://neovim.io/) dotfiles.
 
@@ -37,6 +42,7 @@ lua/
 ftplugin/             filetype settings, after/ftplugin/ to override built-ins
 lua_snippets/         LuaSnip snippets per filetype
 scripts/              helper scripts, e.g. package lists for the installer
+assets/               images used in this README
 ```
 
 ### Plugins
