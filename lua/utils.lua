@@ -3,7 +3,21 @@ local M = {}
 M.disable_lint = function(bufnr)
   bufnr = bufnr or 0
   vim.b[bufnr].lint_enabled = false
-  vim.diagnostic.reset(nil, 0)
+
+  -- only clear the diagnostics of nvim-lint, not the ones of LSP servers
+  local ok, lint = pcall(require, "lint")
+  if not ok then
+    return
+  end
+  local names = {}
+  for _, linters in pairs(lint.linters_by_ft) do
+    for _, name in ipairs(linters) do
+      names[name] = true
+    end
+  end
+  for name in pairs(names) do
+    vim.diagnostic.reset(lint.get_namespace(name), bufnr)
+  end
 end
 
 M.enable_lint = function(bufnr)
