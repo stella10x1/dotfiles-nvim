@@ -50,7 +50,7 @@ lua/
 ├── keymaps.lua       keymaps not tied to a plugin
 ├── plugins/          one file per plugin
 ├── tools/            registry of external programs (LSPs, formatters, ...)
-└── *.lua             helpers (utils.lua, zk_funcs.lua, filetypes-custom.lua)
+└── *.lua             helpers (utils.lua, filetypes-custom.lua)
 ftplugin/             filetype settings, after/ftplugin/ to override built-ins
 lua_snippets/         LuaSnip snippets per filetype
 scripts/              helper scripts, e.g. package lists for the installer
