@@ -28,6 +28,18 @@ This are my [Neovim](https://neovim.io/) dotfiles.
       sudo pacman -S --needed -
     ```
 
+3. Optional: install the LaTeX treesitter parser for highlighting LaTeX
+   nested in markdown (e.g. math):
+
+    ```vim
+    :TSInstall latex
+    ```
+
+    It is not installed automatically, because generating this parser needs a
+    lot of memory and can trigger the OOM killer on machines with little RAM
+    (e.g. 4 GiB without swap). It is only used for nested highlighting, LaTeX
+    files themselves are highlighted by vimtex.
+
 ## Structure
 
 ```text
