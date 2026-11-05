@@ -3,6 +3,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.g.man_hardwrap = 0
 
+-- disable netrw (:h netrw-noload): mini.files is the file explorer and the
+-- built-in spellfile plugin downloads spell files without netrw since 0.12
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 require("keymaps")
 require("options")
 require("filetypes-custom")
