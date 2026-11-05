@@ -8,7 +8,7 @@ end
 
 M.enable_lint = function(bufnr)
   bufnr = bufnr or 0
-  vim.b[bufnr].lint_enabled = false
+  vim.b[bufnr].lint_enabled = true
   require("lint").try_lint()
 end
 
