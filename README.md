@@ -27,8 +27,11 @@ This are my [Neovim](https://neovim.io/) dotfiles.
 
 ### pre-commit
 
-Lua files are formatted with [StyLua][StyLua] (config in `.stylua.toml`). A
-[pre-commit][pre-commit] hook runs it on every commit:
+Lua files are formatted with [StyLua][StyLua] (config in `.stylua.toml`).
+Additionally, some of the default [pre-commit-hooks][pre-commit-hooks] validate
+JSON/TOML/YAML (e.g. `nvim-pack-lock.json`) and fix trailing whitespace, line
+endings and missing newlines at the end of files. [pre-commit][pre-commit] runs
+all hooks on every commit:
 
 ```bash
 # install the git hook once per clone
@@ -64,4 +67,5 @@ Feel free to use any code of this repository in your dotfiles!
 [NvChad]: https://github.com/NvChad/NvChad
 [lazy.nvim]: https://lazy.folke.io/
 [pre-commit]: https://pre-commit.com/
+[pre-commit-hooks]: https://github.com/pre-commit/pre-commit-hooks
 [StyLua]: https://github.com/JohnnyMorganz/StyLua
