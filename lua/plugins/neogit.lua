@@ -40,18 +40,13 @@ require("neogit").setup({
   },
 })
 
--- mappings file for neogit.
+-- mappings
 
 local map = vim.keymap.set
-
--- "<leader>gb": Telescope git_branches
 
 map("n", "<leader>gc", function()
   return require("neogit").open({ "commit" })
 end, { desc = "Git Commit" })
-
--- "<leader>gd": Diffview File History
--- "<leader>gD": Diffview Open
 
 map("n", "<leader>gl", function()
   return require("neogit").open({ "log" })
