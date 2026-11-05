@@ -1,14 +1,15 @@
-if not vim.b.jinja_syntax_autocmd_loaded then
-  if vim.treesitter.language.get_lang("jinja") == nil then
-    vim.api.nvim_create_autocmd("FileType", {
-      buffer = 0,
-      callback = function()
-        if vim.fn.empty(vim.bo.filetype) == 0 then
-          vim.opt_local.syntax = "on"
-          require("utils").disable_lint(0)
-        end
-      end,
-    })
-  end
-  vim.b.jinja_syntax_autocmd_loaded = true
+-- Without a jinja treesitter parser, compound filetypes like yaml.jinja are
+-- highlighted with the parser of the first part (e.g. yaml) only. Use the
+-- syntax highlighting of jinja.vim instead. Scheduled, because
+-- tree-sitter-manager starts treesitter after the ftplugins ran.
+if not vim.treesitter.language.add("jinja") then
+  local buf = vim.api.nvim_get_current_buf()
+  vim.schedule(function()
+    if vim.api.nvim_buf_is_valid(buf) then
+      vim.treesitter.stop(buf)
+    end
+  end)
 end
+
+-- linters of the base filetype don't understand jinja templates
+require("utils").disable_lint(0)
