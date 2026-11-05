@@ -35,7 +35,7 @@ init.lua              leader keys, options, requires all plugin files in order
 nvim-pack-lock.json   vim.pack lockfile (commit it!)
 lua/
 ├── options.lua       global options
-├── mappings/         keymaps not tied to a plugin (default.lua)
+├── keymaps.lua       keymaps not tied to a plugin
 ├── plugins/          one file per plugin
 ├── tools/            registry of external programs (LSPs, formatters, ...)
 └── *.lua             helpers (utils.lua, zk_funcs.lua, filetypes-custom.lua)

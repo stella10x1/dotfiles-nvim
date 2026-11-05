@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.g.man_hardwrap = 0
 
-require("mappings.default")
+require("keymaps")
 require("options")
 require("filetypes-custom")
 
