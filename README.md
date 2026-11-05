@@ -23,6 +23,43 @@ This are my [Neovim](https://neovim.io/) dotfiles.
       sudo pacman -S --needed -
     ```
 
+## Structure
+
+```text
+init.lua              leader keys, options, requires all plugin files in order
+nvim-pack-lock.json   vim.pack lockfile (commit it!)
+lua/
+├── options.lua       global options
+├── mappings/         keymaps not tied to a plugin (default.lua)
+├── plugins/          one file per plugin
+├── tools/            registry of external programs (LSPs, formatters, ...)
+└── *.lua             helpers (utils.lua, zk_funcs.lua, filetypes-custom.lua)
+ftplugin/             filetype settings, after/ftplugin/ to override built-ins
+lua_snippets/         LuaSnip snippets per filetype
+scripts/              helper scripts, e.g. package lists for the installer
+```
+
+### Plugins
+
+Each file in `lua/plugins/` is self-contained: it calls `vim.pack.add()` for
+the plugin (and its dependencies), runs the setup and defines the plugin's
+keymaps. `init.lua` requires the files explicitly, so the load order is
+visible there (e.g. `snacks` before `zk`, `luasnip` before `blink`). To
+disable a plugin, comment out its `require`. To remove it from disk as well,
+run `:lua vim.pack.del({ "name" })` and commit the updated lockfile.
+
+Files are named after the plugin without `nvim-`/`vim-` prefixes and
+`.nvim`/`.vim` suffixes, e.g. `vim-table-mode` → `table-mode.lua`,
+`zk-nvim` → `zk.lua`. Exceptions: `lsp.lua` (nvim-lspconfig) and `blink.lua`
+(blink.cmp).
+
+### Tools
+
+`lua/tools/registry.lua` is the single source of truth for external programs:
+LSP servers (`vim.lsp.enable`), formatters (conform.nvim), linters (nvim-lint)
+and their package names. `:checkhealth tools` checks that they are installed,
+and `scripts/packages.lua` prints the packages for an installer.
+
 ## Development
 
 ### pre-commit
