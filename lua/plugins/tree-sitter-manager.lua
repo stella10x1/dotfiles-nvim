@@ -1,3 +1,5 @@
+-- plugin file for tree-sitter-manager.nvim.
+
 vim.pack.add({
   { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
 })

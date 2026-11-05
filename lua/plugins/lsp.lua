@@ -9,5 +9,3 @@ vim.lsp.enable(require("tools").lsp())
 vim.keymap.set("n", "<leader>d", function()
   return vim.diagnostic.open_float()
 end, { desc = "Open float diagnostic" })
-
--- End of file.

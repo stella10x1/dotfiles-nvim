@@ -3,5 +3,3 @@
 vim.pack.add({
   { src = "https://github.com/saghen/blink.indent" },
 })
-
--- End of file.

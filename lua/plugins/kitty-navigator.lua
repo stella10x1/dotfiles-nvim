@@ -26,5 +26,3 @@ map(
   "<C-\\><C-N><cmd>KittyNavigateRight<CR>",
   { desc = "Terminal Leave insert and move right (or kitty pane)" }
 )
-
--- End of file.

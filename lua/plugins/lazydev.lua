@@ -1,4 +1,4 @@
--- plugin file for lazydev.
+-- plugin file for lazydev.nvim.
 
 vim.pack.add({
   { src = "https://github.com/folke/lazydev.nvim" },
@@ -20,5 +20,3 @@ require("lazydev").setup({
     return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
   end,
 })
-
--- End of file.

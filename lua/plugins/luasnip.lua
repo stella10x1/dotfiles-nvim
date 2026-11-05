@@ -40,5 +40,3 @@ map({ "i", "s" }, "<C-e>", function()
     ls.change_choice(1)
   end
 end, { desc = "LuaSnip Next choice on node" })
-
--- End of file.

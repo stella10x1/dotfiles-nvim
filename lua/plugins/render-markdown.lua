@@ -1,4 +1,4 @@
--- plugin file for render-markdown.
+-- plugin file for render-markdown.nvim.
 
 vim.pack.add({
   { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },

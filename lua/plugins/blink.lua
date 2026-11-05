@@ -30,5 +30,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.b.completion = false
   end,
 })
-
--- End of file.

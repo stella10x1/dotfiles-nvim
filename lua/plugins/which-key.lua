@@ -5,5 +5,3 @@ vim.pack.add({
 })
 
 require("which-key").setup()
-
--- End of file.

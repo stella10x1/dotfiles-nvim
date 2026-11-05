@@ -32,5 +32,3 @@ vim.api.nvim_create_autocmd("FileType", {
 require("mini.git").setup()
 
 require("mini.diff").setup()
-
--- End of file.

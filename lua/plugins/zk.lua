@@ -1,4 +1,4 @@
--- plugin file for zk.nvim.
+-- plugin file for zk-nvim.
 
 vim.pack.add({
   { src = "https://github.com/zk-org/zk-nvim" },
@@ -91,5 +91,3 @@ end, { desc = "Zk Creates or opens yesterdays journal entry" })
 map("n", "<leader>zz", function()
   require("zk").edit({ excludeHrefs = { "journal" }, sort = { "modified" } })
 end, { desc = "Zk Search for zk notes excluding journal entries" })
-
--- End of file.
