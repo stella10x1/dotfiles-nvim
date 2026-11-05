@@ -1,8 +1,5 @@
 -- plugin file for follow-md-links.nvim.
 
-return {
-  "jghauser/follow-md-links.nvim",
-  ft = { "markdown" },
-}
-
--- End of file.
+vim.pack.add({
+  { src = "https://github.com/jghauser/follow-md-links.nvim" },
+})

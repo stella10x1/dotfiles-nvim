@@ -10,33 +10,38 @@ local d = ls.dynamic_node
 
 local snippets = {
   s("use", {
-    t "use {",
-    t { "", "\t'" },
+    t("use {"),
+    t({ "", "\t'" }),
     i(0, "package"),
-    t { "'" },
-    t { "", "}" },
+    t({ "'" }),
+    t({ "", "}" }),
   }),
 
   s("map", {
-    t 'map("',
+    t('map("'),
     i(1, "n"),
-    t '", "',
+    t('", "'),
     i(4, "MAPPING"),
-    t '", ',
+    t('", '),
     i(0, '"ACTION"'),
-    t ', { desc = "',
+    t(', { desc = "'),
     i(2, "SECTION"),
-    t " ",
+    t(" "),
     i(3, "DESC"),
-    t '" })',
+    t('" })'),
   }),
 
   s("nvconf", {
-    t("-- "), i(1, "plugin"), t({" file for "}), i(2, "plugin name"), t".",
-    t({"", ""}),
-    t({"", ""}), i(0),
-    t({"", ""}),
-    t({"", "-- End of file."}),
+    t("-- "),
+    i(1, "plugin"),
+    t({ " file for " }),
+    i(2, "plugin name"),
+    t("."),
+    t({ "", "" }),
+    t({ "", "" }),
+    i(0),
+    t({ "", "" }),
+    t({ "", "-- End of file." }),
   }),
 }
 

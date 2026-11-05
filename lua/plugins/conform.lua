@@ -1,11 +1,13 @@
 -- plugin file for conform.nvim.
 
-return {
-  "stevearc/conform.nvim",
-  init = function()
-    require "mappings.conform"
-  end,
-  opts = require "configs.conform"
-}
+vim.pack.add({
+  { src = "https://github.com/stevearc/conform.nvim" },
+})
 
--- End of file.
+require("conform").setup({
+  formatters_by_ft = require("tools").formatters_by_ft(),
+})
+
+vim.keymap.set("n", "<leader>FF", function()
+  require("conform").format()
+end, { desc = "Buffer Code formatting" })

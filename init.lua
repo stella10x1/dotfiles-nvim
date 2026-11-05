@@ -1,51 +1,50 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+-- globals
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.g.man_hardwrap = 0
--- will be used by NvChad to load lua snippets
-vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua_snippets"
 
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+-- disable netrw (:h netrw-noload): mini.files is the file explorer and the
+-- built-in spellfile plugin downloads spell files without netrw since 0.12
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-if not vim.uv.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
-end
-
-vim.opt.rtp:prepend(lazypath)
-
-local lazy_config = require "configs.lazy"
-
--- load plugins
-require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
-
-  { import = "plugins" },
-}, lazy_config)
-
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
-
-require "options"
-require "nvchad.autocmds"
-
-vim.schedule(function()
-  require "mappings.default"
-end)
-
--- load custom filetype detection definitions
+require("keymaps")
+require("options")
 require("filetypes-custom")
 
--- load custom highlight groups
-require("hl-groups-custom")
+-- Look and feel
+vim.cmd.colorscheme("catppuccin")
 
--- load user commands
-require "user_commands"
-require "autocmd"
+require("plugins.mini")
+require("plugins.blink-indent")
+
+require("plugins.which-key")
+require("plugins.kitty-navigator")
+
+require("plugins.snacks")
+
+-- Completion and LSP
+
+require("plugins.lazydev")
+
+require("plugins.lsp")
+
+require("plugins.luasnip")
+require("plugins.blink-cmp")
+
+require("plugins.conform")
+
+require("plugins.table-mode")
+require("plugins.follow-md-links")
+require("plugins.info")
+require("plugins.jinja")
+
+require("plugins.zk")
+
+require("plugins.neogit")
+require("plugins.opencode")
+require("plugins.render-markdown")
+require("plugins.tree-sitter-manager")
+require("plugins.codediff")
+require("plugins.vimtex")
+require("plugins.lint")
