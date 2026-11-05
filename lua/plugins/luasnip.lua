@@ -8,6 +8,15 @@ vim.pack.add {
 local ls = require "luasnip"
 local types = require "luasnip.util.types"
 
+-- Dot displayed after an active ChoiceNode. Set again on every colorscheme
+-- change, because `:colorscheme` clears custom highlight groups.
+local function set_choice_hl()
+  vim.api.nvim_set_hl(0, "LuaSnipChoiceNodeHintDot", { fg = "#088F8F", ctermfg = 6 })
+end
+
+set_choice_hl()
+vim.api.nvim_create_autocmd("ColorScheme", { callback = set_choice_hl })
+
 ls.setup {
   ext_opts = {
     [types.choiceNode] = {
