@@ -10,6 +10,13 @@ require("render-markdown").setup({
   },
   enabled = true,
   file_types = { "markdown", "opencode_output" },
+  overrides = {
+    filetype = {
+      -- only render opencode.nvim output by default, toggle markdown buffers
+      -- with <leader>tr
+      markdown = { enabled = false },
+    },
+  },
 })
 
-vim.keymap.set("n", "<leader>tr", "<cmd> RenderMarkdown toggle<CR>", { desc = "Toggle Rendering markdown" })
+vim.keymap.set("n", "<leader>tr", "<cmd> RenderMarkdown buf_toggle<CR>", { desc = "Toggle Rendering markdown" })
