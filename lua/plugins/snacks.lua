@@ -133,10 +133,6 @@ vim.keymap.set("n", "<leader>gC", function()
   return require("snacks").picker.git_log()
 end, { desc = "Pick git checkout from log" })
 
-vim.keymap.set("n", "<leader>gd", function()
-  return require("snacks").picker.git_diff()
-end, { desc = "Pick git diffs" })
-
 vim.keymap.set("n", "<leader>gf", function()
   return require("snacks").picker.git_files()
 end, { desc = "Pick git files" })
@@ -144,6 +140,10 @@ end, { desc = "Pick git files" })
 vim.keymap.set("n", "<leader>gg", function()
   return require("snacks").picker.git_grep()
 end, { desc = "Pick git grep" })
+
+vim.keymap.set("n", "<leader>gh", function()
+  return require("snacks").picker.git_diff()
+end, { desc = "Pick git diff hunks" })
 
 vim.keymap.set("n", "<leader>gz", function()
   return require("snacks").picker.git_stashes()
