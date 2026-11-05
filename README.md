@@ -41,6 +41,19 @@ pre-commit run --all-files
 If the hook reformats files, the commit is aborted. Review the changes, stage
 them and commit again.
 
+### git blame
+
+Formatting-only commits are listed in `.git-blame-ignore-revs`, so `git blame`
+shows the commit that actually changed a line. GitHub picks this file up
+automatically. For local `git blame` (and blame in Neovim), enable it once per
+clone:
+
+```bash
+git config blame.ignoreRevsFile .git-blame-ignore-revs
+```
+
+When adding another formatting-only commit, append its full hash to the file.
+
 ## License and re-use
 
 The code in this dotfile repository is licensed under [the Unlicense](./LICENSE)
