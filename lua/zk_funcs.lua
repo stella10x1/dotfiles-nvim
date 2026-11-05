@@ -1,51 +1,29 @@
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local conf = require("telescope.config").values
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
+-- helper functions for zk.nvim.
 
-local zk_dir = require("zk.util").notebook_root(require("zk.util").resolve_notebook_path(0))
+local M = {}
 
--- Lua implementation of PHP scandir function
--- Source https://stackoverflow.com/a/11130774
--- Author Bobby Oster, CC-BY-SA
--- Start code from Bobby Oster
-local scandir = function(directory)
-  local i, t, popen = 0, {}, io.popen
-  local pfile = popen('ls -l "' .. directory .. '" | grep "^d" | grep -o "[a-zA-Z0-9]*$"')
-  if pfile ~= nil then
-    for filename in pfile:lines() do
-      i = i + 1
-      t[i] = filename
-    end
-    pfile:close()
+-- Select a top-level folder of the current notebook and create a new note in it.
+M.new_zk_note_in_subfolder = function()
+  local util = require("zk.util")
+  local zk_dir = util.notebook_root(util.resolve_notebook_path(0))
+  if not zk_dir then
+    vim.notify("No zk notebook found", vim.log.levels.WARN)
+    return
   end
-  return t
-end
--- End code from Bobby Oster
 
-M = {}
+  local dirs = {}
+  for name, type in vim.fs.dir(zk_dir) do
+    if type == "directory" and not vim.startswith(name, ".") then
+      table.insert(dirs, name)
+    end
+  end
+  table.sort(dirs)
 
-M.new_zk_note_in_subfolder = function(opts)
-  opts = opts or {}
-  pickers
-    .new(opts, {
-      prompt_title = "New Zk Note Subfolder",
-      finder = finders.new_table({
-        results = scandir(zk_dir),
-      }),
-      attach_mappings = function(prompt_bufnr, map)
-        actions.select_default:replace(function()
-          actions.close(prompt_bufnr)
-          local selection = action_state.get_selected_entry()
-          require("zk.commands").get("ZkNew")({ dir = zk_dir .. "/" .. selection[1] })
-        end)
-        return true
-      end,
-      sorter = conf.generic_sorter(opts),
-    })
-    :find()
+  vim.ui.select(dirs, { prompt = "New Zk Note Subfolder" }, function(choice)
+    if choice then
+      require("zk.commands").get("ZkNew")({ dir = vim.fs.joinpath(zk_dir, choice) })
+    end
+  end)
 end
 
--- to execute the function
 return M
