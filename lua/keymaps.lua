@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-local nomap = vim.keymap.del
 
 ------------------------------------------------------------
 -- Mappings for Default NeoVim Functions
