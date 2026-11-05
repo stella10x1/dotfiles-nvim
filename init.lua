@@ -5,6 +5,7 @@ vim.g.man_hardwrap = 0
 
 require('mappings.default')
 require('options')
+require('filetypes-custom')
 
 -- Look and feel
 vim.cmd.colorscheme("catppuccin")
