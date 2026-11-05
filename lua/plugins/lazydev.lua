@@ -1,10 +1,10 @@
 -- plugin file for lazydev.
 
-vim.pack.add {
+vim.pack.add({
   { src = "https://github.com/folke/lazydev.nvim" },
-}
+})
 
-require("lazydev").setup {
+require("lazydev").setup({
   library = {
     { path = "${3rd}/luv/library", words = { "vim%.uv" } },
   },
@@ -19,6 +19,6 @@ require("lazydev").setup {
     -- projects with their own .luarc.json aren't Neovim config/plugins
     return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
   end,
-}
+})
 
 -- End of file.

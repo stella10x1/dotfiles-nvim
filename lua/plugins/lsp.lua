@@ -1,8 +1,8 @@
 -- plugin file for nvim-lspconfig.
 
-vim.pack.add {
+vim.pack.add({
   { src = "https://github.com/neovim/nvim-lspconfig" },
-}
+})
 
 vim.lsp.enable(require("tools").lsp())
 

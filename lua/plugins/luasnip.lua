@@ -1,12 +1,12 @@
 -- plugin file for LuaSnip.
 
-vim.pack.add {
-  { src = "https://github.com/L3MON4D3/LuaSnip", version = vim.version.range "2.*" },
+vim.pack.add({
+  { src = "https://github.com/L3MON4D3/LuaSnip", version = vim.version.range("2.*") },
   { src = "https://github.com/rafamadriz/friendly-snippets" },
-}
+})
 
-local ls = require "luasnip"
-local types = require "luasnip.util.types"
+local ls = require("luasnip")
+local types = require("luasnip.util.types")
 
 -- Dot displayed after an active ChoiceNode. Set again on every colorscheme
 -- change, because `:colorscheme` clears custom highlight groups.
@@ -17,7 +17,7 @@ end
 set_choice_hl()
 vim.api.nvim_create_autocmd("ColorScheme", { callback = set_choice_hl })
 
-ls.setup {
+ls.setup({
   ext_opts = {
     [types.choiceNode] = {
       active = {
@@ -26,10 +26,10 @@ ls.setup {
       },
     },
   },
-}
+})
 
 -- own snippets (previously loaded by NvChad via vim.g.lua_snippets_path)
-require("luasnip.loaders.from_lua").lazy_load { paths = { vim.fn.stdpath "config" .. "/lua_snippets" } }
+require("luasnip.loaders.from_lua").lazy_load({ paths = { vim.fn.stdpath("config") .. "/lua_snippets" } })
 -- friendly-snippets
 require("luasnip.loaders.from_vscode").lazy_load()
 

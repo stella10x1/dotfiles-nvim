@@ -1,6 +1,6 @@
 -- Functions to query the registry of external programs (lua/tools/registry.lua).
 
-local registry = require "tools.registry"
+local registry = require("tools.registry")
 
 local M = {}
 
@@ -29,12 +29,12 @@ end
 
 -- Return formatters_by_ft for conform.nvim.
 M.formatters_by_ft = function()
-  return by_ft "formatter"
+  return by_ft("formatter")
 end
 
 -- Return linters_by_ft for nvim-lint.
 M.linters_by_ft = function()
-  return by_ft "linter"
+  return by_ft("linter")
 end
 
 -- Return all entries of the registry with their section, in registry order.

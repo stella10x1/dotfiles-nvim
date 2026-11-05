@@ -17,7 +17,7 @@ map("n", "<leader>se", "<cmd>set spell spelllang=en<CR>", { desc = "Spell Activa
 map("n", "<leader>S", "<cmd>set spell!<CR>", { desc = "Spell Toggle spell check" })
 
 map("n", "<leader><leader>", function()
-  vim.cmd.edit(vim.fn.stdpath('state') .. '/scratch.md')
+  vim.cmd.edit(vim.fn.stdpath("state") .. "/scratch.md")
 end, { desc = "Notes Open scratchpad note" })
 
 -- insert mode

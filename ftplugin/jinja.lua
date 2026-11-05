@@ -1,5 +1,5 @@
 if not vim.b.jinja_syntax_autocmd_loaded then
-  if vim.treesitter.language.get_lang "jinja" == nil then
+  if vim.treesitter.language.get_lang("jinja") == nil then
     vim.api.nvim_create_autocmd("FileType", {
       buffer = 0,
       callback = function()

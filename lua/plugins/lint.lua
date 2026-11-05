@@ -1,10 +1,10 @@
 -- plugin file for nvim-lint.
 
 vim.pack.add({
-  { src = 'https://github.com/mfussenegger/nvim-lint' }
+  { src = "https://github.com/mfussenegger/nvim-lint" },
 })
 
-local lint = require "lint"
+local lint = require("lint")
 
 lint.linters_by_ft = require("tools").linters_by_ft()
 

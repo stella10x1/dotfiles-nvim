@@ -1,8 +1,8 @@
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
 local conf = require("telescope.config").values
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 
 local zk_dir = require("zk.util").notebook_root(require("zk.util").resolve_notebook_path(0))
 
@@ -31,14 +31,14 @@ M.new_zk_note_in_subfolder = function(opts)
   pickers
     .new(opts, {
       prompt_title = "New Zk Note Subfolder",
-      finder = finders.new_table {
+      finder = finders.new_table({
         results = scandir(zk_dir),
-      },
+      }),
       attach_mappings = function(prompt_bufnr, map)
         actions.select_default:replace(function()
           actions.close(prompt_bufnr)
           local selection = action_state.get_selected_entry()
-          require("zk.commands").get "ZkNew" { dir = zk_dir .. "/" .. selection[1] }
+          require("zk.commands").get("ZkNew")({ dir = zk_dir .. "/" .. selection[1] })
         end)
         return true
       end,

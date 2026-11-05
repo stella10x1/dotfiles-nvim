@@ -1,6 +1,6 @@
 -- Health check for external programs, run with `:checkhealth tools`.
 
-local tools = require "tools"
+local tools = require("tools")
 
 local M = {}
 

@@ -1,12 +1,12 @@
 local M = {}
 
-M.disable_lint = function (bufnr)
+M.disable_lint = function(bufnr)
   bufnr = bufnr or 0
   vim.b[bufnr].lint_enabled = false
   vim.diagnostic.reset(nil, 0)
 end
 
-M.enable_lint = function (bufnr)
+M.enable_lint = function(bufnr)
   bufnr = bufnr or 0
   vim.b[bufnr].lint_enabled = false
   require("lint").try_lint()

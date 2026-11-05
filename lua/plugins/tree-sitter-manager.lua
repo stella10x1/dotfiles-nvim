@@ -1,8 +1,8 @@
-vim.pack.add {
+vim.pack.add({
   { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
-}
+})
 
-require("tree-sitter-manager").setup {
+require("tree-sitter-manager").setup({
   ensure_installed = {
     "bash",
     "css",
@@ -23,4 +23,4 @@ require("tree-sitter-manager").setup {
     "xml",
     "yaml",
   },
-}
+})

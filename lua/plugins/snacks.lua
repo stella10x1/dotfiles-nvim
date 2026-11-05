@@ -1,10 +1,10 @@
-vim.pack.add {
+vim.pack.add({
   { src = "https://github.com/folke/snacks.nvim" },
-}
+})
 
-require("snacks").setup {
+require("snacks").setup({
   picker = { enabled = true },
-}
+})
 
 -- Terminal
 
@@ -105,7 +105,7 @@ vim.keymap.set("n", "<leader>fx", function()
     local title = vim.b[term.buf].term_title or vim.api.nvim_buf_get_name(term.buf)
     table.insert(items, { text = title, buf = term.buf, term = term })
   end
-  return require("snacks").picker.pick {
+  return require("snacks").picker.pick({
     title = "Terminals",
     items = items,
     format = "text",
@@ -114,14 +114,14 @@ vim.keymap.set("n", "<leader>fx", function()
       picker:close()
       item.term:show():focus()
     end,
-  }
+  })
 end, { desc = "Pick running terminals" })
 
 vim.keymap.set("n", "<leader>fz", function()
   return require("snacks").picker.spelling()
 end, { desc = "Pick spell corrections" })
 
-vim.keymap.set("n", "<leader>f\"", function()
+vim.keymap.set("n", '<leader>f"', function()
   return require("snacks").picker.registers()
 end, { desc = "Pick registers" })
 

@@ -1,8 +1,8 @@
 -- plugin file for mini.nvim.
 
-vim.pack.add {
+vim.pack.add({
   { src = "https://github.com/nvim-mini/mini.nvim" },
-}
+})
 
 require("mini.statusline").setup()
 
@@ -10,11 +10,11 @@ require("mini.statusline").setup()
 require("mini.icons").setup()
 
 -- File Browser
-require("mini.files").setup {
+require("mini.files").setup({
   windows = {
     preview = true,
   },
-}
+})
 
 vim.keymap.set("n", "<C-n>", function()
   MiniFiles.open()

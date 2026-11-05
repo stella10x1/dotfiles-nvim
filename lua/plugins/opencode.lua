@@ -1,9 +1,9 @@
-vim.pack.add {
+vim.pack.add({
   { src = "https://github.com/nvim-lua/plenary.nvim" },
   { src = "https://github.com/sudo-tee/opencode.nvim" },
-}
+})
 
-require("opencode").setup {
+require("opencode").setup({
   ui = {
     picker = {
       ---@module "snacks"
@@ -13,4 +13,4 @@ require("opencode").setup {
       },
     },
   },
-}
+})
