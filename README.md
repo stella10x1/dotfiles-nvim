@@ -66,10 +66,12 @@ visible there (e.g. `snacks` before `zk`, `luasnip` before `blink`). To
 disable a plugin, comment out its `require`. To remove it from disk as well,
 run `:lua vim.pack.del({ "name" })` and commit the updated lockfile.
 
-Files are named after the plugin without `nvim-`/`vim-` prefixes and
-`.nvim`/`.vim` suffixes, e.g. `vim-table-mode` → `table-mode.lua`,
-`zk-nvim` → `zk.lua`. Exceptions: `lsp.lua` (nvim-lspconfig) and `blink.lua`
-(blink.cmp).
+Files are named after the plugin's repo name in lowercase, without
+`nvim-`/`vim-` prefixes and `.nvim`/`.vim`/`-nvim` suffixes. Remaining dots
+become hyphens, because `require()` treats dots as path separators. Examples:
+`vim-table-mode` → `table-mode.lua`, `zk-nvim` → `zk.lua`, `LuaSnip` →
+`luasnip.lua`, `blink.indent` → `blink-indent.lua`. Exceptions: `lsp.lua`
+(nvim-lspconfig) and `blink.lua` (blink.cmp).
 
 ### Tools
 
