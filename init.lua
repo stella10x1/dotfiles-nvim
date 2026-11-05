@@ -25,7 +25,7 @@ require("plugins.lazydev")
 require("plugins.lsp")
 
 require("plugins.luasnip")
-require("plugins.blink")
+require("plugins.blink-cmp")
 
 require("plugins.conform")
 
